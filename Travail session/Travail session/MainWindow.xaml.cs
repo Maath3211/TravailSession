@@ -26,11 +26,27 @@ namespace Travail_session
         public MainWindow()
         {
             this.InitializeComponent();
+            mainFrame.Navigate(typeof(affichage_employe));
         }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            myButton.Content = "Clicked";
+            var item = (NavigationViewItem)args.SelectedItem;
+
+            switch (item.Name)
+            {
+                case "iAffClient":
+                    mainFrame.Navigate(typeof(affichage_client));
+                    break;
+                case "iAffEmploye":
+                    mainFrame.Navigate(typeof(affichage_employe));
+                    break;
+                case "iAjouProjet":
+                    mainFrame.Navigate(typeof(affichage_projet));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
