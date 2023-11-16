@@ -26,6 +26,7 @@ namespace Travail_session
         public affichage_client()
         {
             this.InitializeComponent();
+            lvClients.ItemsSource = Singleton.getInstance().getListeClients();
         }
     }
 }
