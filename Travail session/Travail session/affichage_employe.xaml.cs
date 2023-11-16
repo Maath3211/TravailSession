@@ -27,5 +27,10 @@ namespace Travail_session
         {
             this.InitializeComponent();
         }
+
+        private void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

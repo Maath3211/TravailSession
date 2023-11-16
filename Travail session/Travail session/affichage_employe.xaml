@@ -12,12 +12,12 @@
     <Grid>
         <GridView x:Name="gvView" Grid.Row="1" Grid.Column="0" SelectionChanged="gvView_SelectionChanged" Margin="0,20,0,0">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="local:materiel">
+                <DataTemplate x:DataType="local:employes">
                     <StackPanel Orientation="Vertical" Width="280">
                         <Image Source="https://randomuser.me/api/portraits/men/58.jpg" />
-                        <TextBlock Text="{x:Bind Code}" Margin="10,0,0,0" FontSize="18"/>
-                        <TextBlock Text="{x:Bind Modele}" Margin="10,0,0,0" FontSize="18"/>
-                        <TextBlock Text="{x:Bind Meuble}" Margin="10,0,20,50" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Photo}" Margin="10,0,0,0" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,0" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Nom }" Margin="10,0,20,50" FontSize="18"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
