@@ -14,10 +14,10 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:employes">
                     <StackPanel Orientation="Vertical" Width="280">
-                        <Image Source="https://randomuser.me/api/portraits/men/58.jpg" />
-                        <TextBlock Text="{x:Bind Photo}" Margin="10,0,0,0" FontSize="18"/>
+                        <Image Source="{x:Bind Photo}" />
+                        <TextBlock Text="{x:Bind Nom}" Margin="10,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,0" FontSize="18"/>
-                        <TextBlock Text="{x:Bind Nom }" Margin="10,0,20,50" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Adresse }" Margin="10,0,20,50" FontSize="18"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
