@@ -39,9 +39,9 @@ namespace Travail_session
             listeClients.Clear();
             try
             {
-                MySqlCommand commande = new MySqlCommand();
+                MySqlCommand commande = new MySqlCommand("p_afficher_client");
                 commande.Connection = con;
-                commande.CommandText = "SELECT * FROM produits";
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
 
                 if (con.State == System.Data.ConnectionState.Closed) con.Open();
                 MySqlDataReader r = commande.ExecuteReader();
