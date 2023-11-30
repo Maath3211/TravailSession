@@ -77,7 +77,7 @@ namespace Travail_session
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]), (string)r["email"],
+                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]).Substring(0,10), (string)r["email"],
                         (string)r["adresse"], Convert.ToString(r["embauche"]), Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
                 }
                 r.Close();
