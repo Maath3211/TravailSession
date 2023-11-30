@@ -108,8 +108,8 @@ namespace Travail_session
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], (string)r["naissance"], (string)r["email"],
-                        (string)r["adresse"], (string)r["embauche"], Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
+                    listeProjets.Add(new projets((string)r["numProjet"], (string)r["titre"], Convert.ToString(r["debut"]),(string)r["description"],
+                        Convert.ToDouble("budget"),Convert.ToInt32("nbEmploye"),Convert.ToDouble("totalSalaire"),Convert.ToInt32("client"), (string)r["statut"];
                 }
                 r.Close();
                 con.Close();
@@ -123,7 +123,7 @@ namespace Travail_session
                 }
 
             }
-            return listeEmployes;
+            return listeProjets;
         }
     }
 }
