@@ -10,14 +10,32 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <GridView x:Name="gvView" Grid.Row="1" Grid.Column="0" SelectionChanged="gvView_SelectionChanged" Margin="0,20,0,0">
+
+     
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GridView x:Name="lvEmploye" Grid.Row="1" Grid.Column="0" SelectionChanged="gvView_SelectionChanged" Margin="0,20,0,0"  >
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:employes">
                     <StackPanel Orientation="Vertical" Width="280">
                         <Image Source="{x:Bind Photo}" />
-                        <TextBlock Text="{x:Bind Nom}" Margin="10,0,0,0" FontSize="18"/>
-                        <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,0" FontSize="18"/>
-                        <TextBlock Text="{x:Bind Adresse }" Margin="10,0,20,50" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Nom}" Margin="10,0,0,5" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,5" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Adresse }" Margin="10,0,20,5" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Email }" Margin="10,0,20,5" FontSize="18"/>
+                        <TextBlock Text="{x:Bind Statut }" Margin="10,0,20,20" FontSize="18"/>
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
