@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <NavigationView PaneDisplayMode="Left" PaneTitle="Exercice BD" x:Name="navView" Grid.Row="1" SelectionChanged="navView_SelectionChanged">
+        <NavigationView PaneDisplayMode="Left" PaneTitle="Projet Final" x:Name="navView" Grid.Row="1" SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Afficher Client" x:Name="iAffClient" Icon="View"/>
                 <NavigationViewItem Content="Ajouter Client" x:Name="iAjoutClient" Icon="Add"/>

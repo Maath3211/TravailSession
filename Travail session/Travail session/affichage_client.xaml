@@ -17,18 +17,18 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Nom" Grid.Column="0" Margin="115,0,0,0"/>
-        <TextBlock Text="Adresse" Grid.Column="1" Margin="45,0,0,0"/>
-        <TextBlock Text="Email" Grid.Column="2" Margin="45,0,0,0"/>
-        <TextBlock Text="Telephone" Grid.Column="3"/>
+        <TextBlock Text="Nom" Grid.Column="0" Margin="115,0,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Adresse" Grid.Column="1" Margin="45,0,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Email" Grid.Column="2" Margin="45,0,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Telephone" Grid.Column="3" HorizontalAlignment="Center"/>
 
-        <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" >
+        <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" HorizontalAlignment="Stretch" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:clients">
                     <StackPanel Orientation="Horizontal">
