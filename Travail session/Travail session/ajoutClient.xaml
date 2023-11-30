@@ -10,6 +10,37 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="Nouveau client" HorizontalAlignment="Center" Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Margin="0,20,0,30"/>
+
+        <TextBlock Text="Nom" Grid.Row="1" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxNom" Grid.Column="0" Grid.Row="2"  Margin="25,0,25,25"/>
+        <TextBlock Text="Adresse" Grid.Row="1" Grid.Column="2" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxAdresse" Grid.Column="2" Grid.Row="2"  Margin="25,0,25,25"/>
+
+        <TextBlock Text="Email" Grid.Row="3" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxEmail" Grid.Column="0" Grid.Row="4"  Margin="25,0,25,25"/>
+        <TextBlock Text="Téléphone" Grid.Row="3" Grid.Column="2" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxTelephone" Grid.Column="2" Grid.Row="4"  Margin="25,0,25,25"/>
+
+
+
+        <Button x:Name="btnAjout" Content="Ajouter le client" Click="btnAjout_Click" HorizontalAlignment="Center" Grid.ColumnSpan="4" Grid.Row="5"/>
+
+
+        <TextBlock x:Name="tbxErreur" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" Grid.ColumnSpan="4" Grid.Row="8" Margin="0,20,0,0"/>
     </Grid>
 </Page>

@@ -125,5 +125,32 @@ namespace Travail_session
             }
             return listeProjets;
         }
+
+        public void ajouterClient(clients c)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_ajouter_client");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("p_nom", c.Nom);
+                commande.Parameters.AddWithValue("p_adresse", c.Adresse);
+                commande.Parameters.AddWithValue("p_email", c.Email);
+                commande.Parameters.AddWithValue("p_telephone", c.Telephone);
+
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }   
     }
 }

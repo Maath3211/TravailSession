@@ -27,5 +27,10 @@ namespace Travail_session
         {
             this.InitializeComponent();
         }
+
+        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        {
+            //Singleton.getInstance().ajouterClient(c);
+        }
     }
 }
