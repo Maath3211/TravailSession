@@ -14,7 +14,7 @@ namespace Travail_session
 
         ObservableCollection<clients> listeClients;
         ObservableCollection<employes> listeEmployes;
-        ObservableCollection<projets> listeProjet;
+        ObservableCollection<projets> listeProjets;
         static Singleton instance = null;
         MySqlConnection con;
         public Singleton()
@@ -22,7 +22,7 @@ namespace Travail_session
             con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2023_420325ri_fabeq6;Uid=2234434;Pwd=2234434");
             listeClients = new ObservableCollection<clients>();
             listeEmployes = new ObservableCollection<employes>();
-            listeProjet = new ObservableCollection<projets>();
+            listeProjets = new ObservableCollection<projets>();
         }
 
 
@@ -64,12 +64,43 @@ namespace Travail_session
             return listeClients;
         }
 
-        public ObservableCollection<clients> getListeEmploye()
+        public ObservableCollection<employes> getListeEmploye()
         {
-            listeClients.Clear();
+            listeEmployes.Clear();
             try
             {
                 MySqlCommand commande = new MySqlCommand("p_afficher_employe");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]), (string)r["email"],
+                        (string)r["adresse"], Convert.ToString(r["embauche"]), Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
+                }
+                r.Close();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+            return listeEmployes;
+        }
+
+        public ObservableCollection<projets> getListeProjet()
+        {
+            listeProjets.Clear();
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_afficher_projet");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -94,6 +125,5 @@ namespace Travail_session
             }
             return listeClients;
         }
-
     }
 }
