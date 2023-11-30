@@ -109,7 +109,7 @@ namespace Travail_session
                 while (r.Read())
                 {
                     listeProjets.Add(new projets((string)r["numProjet"], (string)r["titre"], Convert.ToString(r["debut"]),(string)r["description"],
-                        Convert.ToDouble("budget"),Convert.ToInt32("nbEmploye"),Convert.ToDouble("totalSalaire"),Convert.ToInt32("client"), (string)r["statut"];
+                        Convert.ToDouble("budget"),Convert.ToInt32("nbEmploye"),Convert.ToDouble("totalSalaire"),Convert.ToInt32("client"), (string)r["statut"]));
                 }
                 r.Close();
                 con.Close();
