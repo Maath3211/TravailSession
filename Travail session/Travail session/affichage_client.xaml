@@ -17,10 +17,10 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Nom" Grid.Column="0" Margin="115,0,0,0"/>
@@ -31,8 +31,8 @@
         <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" >
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:clients">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Bind Nom}" Margin="50,0,0,0" FontSize="18"/>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="{x:Bind Nom}" Margin="50,0,0,0" FontSize="18" />
                         <TextBlock Text="{x:Bind Adresse}" Margin="50,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind Email}" Margin="40,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind Telephone}" Margin="40,0,0,0" FontSize="18"/>
