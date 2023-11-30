@@ -26,10 +26,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <GridView x:Name="lvEmploye" Grid.Row="1" Grid.Column="0" SelectionChanged="gvView_SelectionChanged" Margin="0,20,0,0"  >
+            <GridView x:Name="lvEmploye" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" SelectionChanged="gvView_SelectionChanged" Margin="0,20,0,0"  >
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:employes">
                     <StackPanel Orientation="Vertical" Width="280">
+                        <Image Source="https://randomuser.me/api/portraits/men/58.jpg" />
                         <Image Source="{x:Bind Photo}" />
                         <TextBlock Text="{x:Bind Nom}" Margin="10,0,0,5" FontSize="18"/>
                         <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,5" FontSize="18"/>

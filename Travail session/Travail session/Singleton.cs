@@ -108,7 +108,7 @@ namespace Travail_session
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    listeProjets.Add(new projets((string)r["numProjet"], (string)r["titre"], Convert.ToString(r["debut"]),(string)r["description"],
+                    listeProjets.Add(new projets((string)r["numProjet"], (string)r["titre"], Convert.ToString(r["debut"]).Substring(0, 10), (string)r["description"],
                         Convert.ToDouble(r["budget"]),Convert.ToInt32(r["nbEmploye"]),Convert.ToDouble(r["totalSalaire"]),Convert.ToInt32(r["client"]), (string)r["statut"]));
                 }
                 r.Close();
