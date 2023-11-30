@@ -26,6 +26,7 @@ namespace Travail_session
         public affichage_projet()
         {
             this.InitializeComponent();
+            lvProjets.ItemsSource = Singleton.getInstance().getListeProjet();
         }
     }
 }
