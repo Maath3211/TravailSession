@@ -21,8 +21,11 @@
         <NavigationView PaneDisplayMode="Left" PaneTitle="Exercice BD" x:Name="navView" Grid.Row="1" SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Afficher Client" x:Name="iAffClient" Icon="View"/>
+                <NavigationViewItem Content="Ajouter Client" x:Name="iAjoutClient" Icon="Add"/>
                 <NavigationViewItem Content="Afficher Employé" x:Name="iAffEmploye" Icon="View"/>
+                <NavigationViewItem Content="Ajouter Employé" x:Name="iAjoutEmploye" Icon="Add"/>
                 <NavigationViewItem Content="Afficher Projet" x:Name="iAjouProjet" Icon="View"/>
+                <NavigationViewItem Content="Ajouter Projet" x:Name="iAjoutProjet" Icon="Add"/>
             </NavigationView.MenuItems>
 
         </NavigationView>

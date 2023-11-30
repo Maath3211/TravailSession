@@ -44,6 +44,15 @@ namespace Travail_session
                 case "iAjouProjet":
                     mainFrame.Navigate(typeof(affichage_projet));
                     break;
+                case "iAjoutClient":
+                    mainFrame.Navigate(typeof(ajoutClient));
+                    break;
+                case "iAjoutEmploye":
+                    mainFrame.Navigate(typeof(ajouteEmploye));
+                    break;
+                case "iAjoutProjet":
+                    mainFrame.Navigate(typeof(ajoutProjet));
+                    break;
                 default:
                     break;
             }
