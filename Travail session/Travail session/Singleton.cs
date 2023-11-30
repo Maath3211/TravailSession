@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAppSDK.Runtime.Packages;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,7 @@ namespace Travail_session
         ObservableCollection<clients> listeClients;
         ObservableCollection<employes> listeEmployes;
         static Singleton instance = null;
+        MySqlConnection con;
         public Singleton()
         {
             listeClients = new ObservableCollection<clients>();
