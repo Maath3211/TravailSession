@@ -64,9 +64,9 @@ namespace Travail_session
             return listeClients;
         }
 
-        public ObservableCollection<clients> getListeEmploye()
+        public ObservableCollection<employes> getListeEmploye()
         {
-            listeClients.Clear();
+            listeEmployes.Clear();
             try
             {
                 MySqlCommand commande = new MySqlCommand("p_afficher_employe");
@@ -92,7 +92,7 @@ namespace Travail_session
                 }
 
             }
-            return listeClients;
+            return listeEmployes;
         }
 
     }
