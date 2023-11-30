@@ -130,13 +130,13 @@ namespace Travail_session
         {
             try
             {
-                MySqlCommand commande = new MySqlCommand("p_ajouter_client");
+                MySqlCommand commande = new MySqlCommand("p_ajoutClient");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
-                commande.Parameters.AddWithValue("p_nom", c.Nom);
-                commande.Parameters.AddWithValue("p_adresse", c.Adresse);
-                commande.Parameters.AddWithValue("p_email", c.Email);
-                commande.Parameters.AddWithValue("p_telephone", c.Telephone);
+                commande.Parameters.AddWithValue("Nnom", c.Nom);
+                commande.Parameters.AddWithValue("Nadresse", c.Adresse);
+                commande.Parameters.AddWithValue("Nemail", c.Email);
+                commande.Parameters.AddWithValue("Ntelephone", c.Telephone);
 
                 con.Open();
                 commande.Prepare();
