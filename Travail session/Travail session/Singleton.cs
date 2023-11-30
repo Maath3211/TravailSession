@@ -138,7 +138,8 @@ namespace Travail_session
                 commande.Parameters.AddWithValue("p_email", c.Email);
                 commande.Parameters.AddWithValue("p_telephone", c.Telephone);
 
-                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                con.Open();
+                commande.Prepare();
                 commande.ExecuteNonQuery();
                 con.Close();
             }

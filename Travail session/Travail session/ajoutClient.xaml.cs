@@ -30,7 +30,8 @@ namespace Travail_session
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            //Singleton.getInstance().ajouterClient(c);
+            clients c = new clients(0, tbxNom.Text, tbxAdresse.Text, tbxEmail.Text, tbxTelephone.Text);
+            Singleton.getInstance().ajouterClient(c);
         }
     }
 }
