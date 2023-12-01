@@ -152,6 +152,43 @@ namespace Travail_session
                 }
 
             }
-        }   
+        }
+
+        public void ajouterEmploye(employes e)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("ajoutEmploye");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Nnom", e.Nom);
+                commande.Parameters.AddWithValue("Nprenom", e.Prenom);
+                commande.Parameters.AddWithValue("Nnaissance", e.Naissance);
+                commande.Parameters.AddWithValue("Nemail", e.Email);
+                commande.Parameters.AddWithValue("Nadresse", e.Adresse);
+                commande.Parameters.AddWithValue("Nembauche", e.DateEmbauche);
+                commande.Parameters.AddWithValue("Ntaux_horaire", e.TauxHoraire);
+                commande.Parameters.AddWithValue("Nphoto", e.Photo);
+                commande.Parameters.AddWithValue("Nstatut", e.Statut);
+
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
+
+
+
     }
 }
