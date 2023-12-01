@@ -27,5 +27,17 @@ namespace Travail_session
         {
             this.InitializeComponent();
         }
+
+        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        {
+
+            employes emp = new employes(null,tbxNom.Text,tbxPrenom.Text,tbxEmail.Text,tbxDateN.Text,tbxAdresse.Text,tbxDateE.Text,Convert.ToDouble(tbxTaux.Text),
+               tbxPhoto.Text,tbxStaut.Text ) ;
+           
+            Singleton.getInstance().ajouterEmploye(emp);
+            Frame.Navigate(typeof(affichage_employe));
+        }
+
+        
     }
 }
