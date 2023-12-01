@@ -19,7 +19,7 @@ namespace Travail_session
         MySqlConnection con;
         public Singleton()
         {
-            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2023_420325ri_fabeq6;Uid=2234434;Pwd=2234434");
+            con = new MySqlConnection(connexionBD.chaineConnexion);
             listeClients = new ObservableCollection<clients>();
             listeEmployes = new ObservableCollection<employes>();
             listeProjets = new ObservableCollection<projets>();

@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="grille">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -30,7 +30,7 @@
 
         
         <!--CENTRER LA LISTVIEW AVEC LES TITRES-->
-        <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" HorizontalAlignment="Stretch" >
+        <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" HorizontalAlignment="Stretch" SelectionChanged="lvClients_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:clients">
                     <StackPanel Orientation="Horizontal" >

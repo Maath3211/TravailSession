@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="Travail_session.modProjet"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Travail_session"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    CloseButtonClick="ContentDialog_CloseButtonClick">
+
+    <StackPanel>
+        <TextBox x:Name="tbxTitre" Header="Entrez le nom du client" Margin="5"/>
+        <TextBox x:Name="tbxDebut" Header="Entrez l'adresse" Margin="5"/>
+        <TextBox x:Name="tbxDescription" Header="Entrez le numéro de téléphone" Margin="5"/>
+        <TextBox x:Name="tbxBudget" Header="Entrez l'adresse email" Margin="5"/>
+        <ComboBox x:Name="cbEmploye" Header="Nombre d'employé" Width="200">
+            <x:String >1</x:String>
+            <x:String>2</x:String>
+            <x:String>3</x:String>
+            <x:String>4</x:String>
+            <x:String>5</x:String>
+        </ComboBox>
+        <TextBox x:Name="tbxTotalSalaire" Header="Entrez l'adresse" Margin="5"/>
+        <!--<TextBox x:Name="tbxClient" Header="Entrez le numéro de téléphone" Margin="5"/>-->
+        <!--<TextBox x:Name="tbxStatut" Header="Entrez l'adresse email" Margin="5"/>-->
+    </StackPanel>
+</ContentDialog>
