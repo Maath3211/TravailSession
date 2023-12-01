@@ -10,6 +10,51 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="Nouveau projet" HorizontalAlignment="Center" Grid.ColumnSpan="4" FontWeight="Bold" FontSize="30" Margin="0,20,0,30"/>
+
+        <TextBlock Text="Titre" Grid.Row="1" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxTitre" Grid.Column="0" Grid.Row="2"  Margin="25,0,25,25"/>
+        <TextBlock Text="Date de début" Grid.Row="1" Grid.Column="2" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxDate" Grid.Column="2" Grid.Row="2"  Margin="25,0,25,25"/>
+
+        <TextBlock Text="Description" Grid.Row="3" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxDescription" Grid.Column="0" Grid.Row="4"  Margin="25,0,25,25"/>
+        <TextBlock Text="Budget" Grid.Row="3" Grid.Column="2" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxBudget" Grid.Column="2" Grid.Row="4"  Margin="25,0,25,25"/>
+
+        <TextBlock Text="Nombre d'employe" Grid.Row="5" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxNbrEmploye" Grid.Column="0" Grid.Row="6"  Margin="25,0,25,25"/>
+        <TextBlock Text="Total des Salaires" Grid.Row="5" Grid.Column="1" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxTotalSalaire" Grid.Column="1" Grid.Row="6"  Margin="25,0,25,25"/>
+
+        <TextBlock Text="Identifiant du client" Grid.Row="7" Grid.Column="0" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxIdClient" Grid.Column="0" Grid.Row="8"  Margin="25,0,25,25"/>
+        <TextBlock Text="Statut" Grid.Row="7" Grid.Column="2" Margin="25,0,0,0"/>
+        <TextBox x:Name="tbxStatut" Grid.Column="2" Grid.Row="8"  Margin="25,0,25,25"/>
+
+
+
+        <Button x:Name="btnAjout" Content="Ajouter le projet" Click="btnAjout_Click" HorizontalAlignment="Center" Grid.ColumnSpan="4" Grid.Row="10"/>
+
+
+        <TextBlock x:Name="tbxErreur" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" Grid.ColumnSpan="4" Grid.Row="10" Margin="0,20,0,0"/>
     </Grid>
 </Page>

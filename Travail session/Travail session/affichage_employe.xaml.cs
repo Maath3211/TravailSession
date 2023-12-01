@@ -27,6 +27,7 @@ namespace Travail_session
         {
             this.InitializeComponent();
            lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
+            
         }
 
         private void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)

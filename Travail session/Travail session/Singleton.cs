@@ -188,6 +188,38 @@ namespace Travail_session
             }
         }
 
+        public void ajouterProjet(projets p)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_ajoutProjet");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Ntitre", p.Titre);
+                commande.Parameters.AddWithValue("Ndebut", p.DateDebut);
+                commande.Parameters.AddWithValue("Ndescription", p.Description);
+                commande.Parameters.AddWithValue("Nbudget", p.Budget);
+                commande.Parameters.AddWithValue("Nemploye", p.NbrEmploye);
+                commande.Parameters.AddWithValue("Ntotal", p.TotalSalaire);
+                commande.Parameters.AddWithValue("Nclient", p.IdClient);
+                commande.Parameters.AddWithValue("Nstatut", p.Statut);
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
+
 
         public void modClient(clients c)
         {

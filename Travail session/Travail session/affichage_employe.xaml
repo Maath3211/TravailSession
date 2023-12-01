@@ -30,8 +30,7 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:employes">
                     <StackPanel Orientation="Vertical" Width="280">
-                        <Image Source="https://randomuser.me/api/portraits/men/58.jpg" />
-                        <Image Source="{x:Bind Photo}" />
+                        <Image Source="{x:Bind Photo}" x:Name="tblphoto"/>
                         <TextBlock Text="{x:Bind Nom}" Margin="10,0,0,5" FontSize="18"/>
                         <TextBlock Text="{x:Bind Prenom}" Margin="10,0,0,5" FontSize="18"/>
                         <TextBlock Text="{x:Bind Adresse }" Margin="10,0,20,5" FontSize="18"/>
