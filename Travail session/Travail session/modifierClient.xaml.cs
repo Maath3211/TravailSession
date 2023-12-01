@@ -41,8 +41,30 @@ namespace Travail_session
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            Singleton.getInstance().modClient(new clients(0,tbxNom.Text,tbxEmail.Text,tbxEmail.Text,tbxTelephone.Text));
+            var erreur = false;
+            if (string.IsNullOrEmpty(tbxNom.Text))
+            {
+                erreur = true;
+                tbxNom.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxAdresse.Text))
+            {
+                erreur = true;
+                tbxAdresse.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxTelephone.Text))
+            {
+                erreur = true;
+                tbxTelephone.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxEmail.Text))
+            {
+                erreur = true;
+                tbxEmail.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
 
+            if (!erreur) Singleton.getInstance().modClient(new clients(c.Id, tbxNom.Text, tbxAdresse.Text, tbxEmail.Text, tbxTelephone.Text));
+            else args.Cancel = true;
 
         }
 

@@ -31,7 +31,8 @@ namespace Travail_session
 
         public async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ModifierClient dialog = new ModifierClient();
+            if (lvClients.SelectedItem != null) { 
+                ModifierClient dialog = new ModifierClient();
             dialog.XamlRoot = grille.XamlRoot;
             dialog.Title = "Modification client";
             dialog.PrimaryButtonText = "Modifier";
@@ -40,8 +41,10 @@ namespace Travail_session
             dialog.DefaultButton = ContentDialogButton.Primary;
             //dialog.Content = "mon contenu";
 
-            //dialog.SetClient(Singleton.getInstance().getClient(lvClients.SelectedIndex));
+             dialog.SetClient(Singleton.getInstance().getClient(lvClients.SelectedIndex));
             ContentDialogResult result = await dialog.ShowAsync();
+            lvClients.ItemsSource = Singleton.getInstance().getListeClients();
+                }
         }
     }
 }

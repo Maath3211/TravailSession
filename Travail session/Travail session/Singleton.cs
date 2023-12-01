@@ -228,6 +228,7 @@ namespace Travail_session
                 MySqlCommand commande = new MySqlCommand("p_modClient");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Nid", c.Id);
                 commande.Parameters.AddWithValue("Nnom", c.Nom);
                 commande.Parameters.AddWithValue("Nadresse", c.Adresse);
                 commande.Parameters.AddWithValue("Nemail", c.Email);
