@@ -31,8 +31,8 @@ namespace Travail_session
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
 
-            projets p = new projets(null,tbxTitre.Text,tbxDate.Text,tbxDescription.Text,Convert.ToDouble(tbxBudget.Text),Convert.ToInt32(tbxNbrEmploye.Text),
-                Convert.ToDouble(tbxTotalSalaire),Convert.ToInt32(tbxIdClient.Text),tbxStatut.Text);
+            projets p = new projets(null, tbxTitre.Text, tbxDate.Text, tbxDescription.Text, Convert.ToDouble(tbxBudget.Text), Convert.ToInt32(tbxNbrEmploye.Text),
+                Convert.ToDouble(tbxTotalSalaire.Text), Convert.ToInt32(tbxIdClient.Text), tbxStatut.Text);
           Singleton.getInstance().ajouterProjet(p);
             Frame.Navigate(typeof(affichage_projet));
         }
