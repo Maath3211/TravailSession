@@ -12,28 +12,32 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Travail_session
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class ajoutClient : Page
+    public sealed partial class ModifierClient : ContentDialog
+
     {
-        public ajoutClient()
+        public ModifierClient()
         {
             this.InitializeComponent();
+            tbxNom.Text = Singleton.getInstance().getClient()
         }
 
-        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            
-            clients c = new clients(0, tbxNom.Text, tbxAdresse.Text, tbxEmail.Text, tbxTelephone.Text);
-            Singleton.getInstance().ajouterClient(c);
-            Frame.Navigate(typeof(affichage_client));
+            Singleton.getInstance().modClient(new clients(0,tbxNom.Text,tbxEmail.Text,tbxEmail.Text,tbxTelephone.Text));
+
+
+        }
+
+        private void ContentDialog_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
         }
     }
 }

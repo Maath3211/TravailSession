@@ -19,7 +19,7 @@ namespace Travail_session
         MySqlConnection con;
         public Singleton()
         {
-            con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2023_420325ri_fabeq6;Uid=2234434;Pwd=2234434");
+            con = new MySqlConnection(connexionBD.chaineConnexion);
             listeClients = new ObservableCollection<clients>();
             listeEmployes = new ObservableCollection<employes>();
             listeProjets = new ObservableCollection<projets>();
@@ -188,6 +188,38 @@ namespace Travail_session
             }
         }
 
+
+        public void modClient(clients c)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_modClient");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Nnom", c.Nom);
+                commande.Parameters.AddWithValue("Nadresse", c.Adresse);
+                commande.Parameters.AddWithValue("Nemail", c.Email);
+                commande.Parameters.AddWithValue("Ntelephone", c.Telephone);
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
+        public clients getClient(int position)
+        {
+            return listeClients[position];
+        }
 
 
     }

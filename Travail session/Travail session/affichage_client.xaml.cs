@@ -28,5 +28,19 @@ namespace Travail_session
             this.InitializeComponent();
             lvClients.ItemsSource = Singleton.getInstance().getListeClients();
         }
+
+        private async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ModifierClient dialog = new ModifierClient();
+            dialog.XamlRoot = grille.XamlRoot;
+            dialog.Title = "Modification client";
+            dialog.PrimaryButtonText = "Modifier";
+            //dialog.SecondaryButtonText = "Non";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            //dialog.Content = "mon contenu";
+
+            ContentDialogResult result = await dialog.ShowAsync();
+        }
     }
 }
