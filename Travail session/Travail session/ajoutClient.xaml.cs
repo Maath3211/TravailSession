@@ -32,7 +32,6 @@ namespace Travail_session
         {
             
             clients c = new clients(0, tbxNom.Text, tbxAdresse.Text, tbxEmail.Text, tbxTelephone.Text);
-            System.Diagnostics.Debug.WriteLine(tbxNom.Text, tbxAdresse.Text, tbxEmail.Text, tbxTelephone.Text);
             Singleton.getInstance().ajouterClient(c);
             Frame.Navigate(typeof(affichage_client));
         }

@@ -216,6 +216,10 @@ namespace Travail_session
 
             }
         }
+        public clients getClient(int position)
+        {
+            return listeClients[position];
+        }
 
 
     }

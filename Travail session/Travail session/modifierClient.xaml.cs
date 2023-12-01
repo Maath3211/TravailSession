@@ -25,11 +25,12 @@ namespace Travail_session
         public ModifierClient()
         {
             this.InitializeComponent();
+            tbxNom.Text = Singleton.getInstance().getClient()
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            
+            Singleton.getInstance().modClient(new clients(0,tbxNom.Text,tbxEmail.Text,tbxEmail.Text,tbxTelephone.Text));
 
 
         }
