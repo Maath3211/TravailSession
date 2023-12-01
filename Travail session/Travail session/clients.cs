@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Travail_session
 {
-    internal class clients
+    public class clients
     {
         int id;
         string nom, adresse, email, telephone;

@@ -29,7 +29,7 @@ namespace Travail_session
             lvClients.ItemsSource = Singleton.getInstance().getListeClients();
         }
 
-        private async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ModifierClient dialog = new ModifierClient();
             dialog.XamlRoot = grille.XamlRoot;
@@ -40,6 +40,7 @@ namespace Travail_session
             dialog.DefaultButton = ContentDialogButton.Primary;
             //dialog.Content = "mon contenu";
 
+            //dialog.SetClient(Singleton.getInstance().getClient(lvClients.SelectedIndex));
             ContentDialogResult result = await dialog.ShowAsync();
         }
     }

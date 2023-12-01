@@ -11,6 +11,7 @@
     CloseButtonClick="ContentDialog_CloseButtonClick" >
     
     <StackPanel>
+        <TextBox x:Name="tbxID" Margin="5" Visibility="Collapsed"/>
         <TextBox x:Name="tbxNom" Header="Entrez le nom du client" Margin="5" Text=""/>
         <TextBox x:Name="tbxAdresse" Header="Entrez l'adresse" Margin="5"/>
         <TextBox x:Name="tbxTelephone" Header="Entrez le numéro de téléphone" Margin="5"/>
