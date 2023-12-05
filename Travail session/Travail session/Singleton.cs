@@ -307,7 +307,14 @@ namespace Travail_session
         {
             return listeClients[position];
         }
-
+        public employes getEmploye(int position)
+        {
+            return listeEmployes[position];
+        }
+        public projets getProjet(int position)
+        {
+            return listeProjets[position];
+        }
 
     }
 }

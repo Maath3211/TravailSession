@@ -26,13 +26,27 @@ namespace Travail_session
         public affichage_employe()
         {
             this.InitializeComponent();
-           lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
-            
+            lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
+
         }
 
-        private void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lvEmploye.SelectedItem != null)
+            {
+                ModifierClient dialog = new ModifierClient();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Modification Employe";
+                dialog.PrimaryButtonText = "Modifier";
+                //dialog.SecondaryButtonText = "Non";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                //dialog.Content = "mon contenu";
 
+                dialog.SetClient(Singleton.getInstance().getClient(lvEmploye.SelectedIndex));
+                ContentDialogResult result = await dialog.ShowAsync();
+                lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
+            }
         }
     }
 }
