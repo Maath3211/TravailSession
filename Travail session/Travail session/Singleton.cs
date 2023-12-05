@@ -34,6 +34,46 @@ namespace Travail_session
             return instance;
         }
 
+
+
+       /* public class SessionManager
+        {
+            private static Dictionary<string, object> sessionVariables = new Dictionary<string, object>();
+
+            public static object GetSessionVariable(string key)
+            {
+                if (sessionVariables.ContainsKey(key))
+                {
+                    return sessionVariables[key];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            public static void SetSessionVariable(string key, object value)
+            {
+                if (sessionVariables.ContainsKey(key))
+                {
+                    sessionVariables[key] = value;
+                }
+                else
+                {
+                    sessionVariables.Add(key, value);
+                }
+            }
+        }
+
+        // Exemple d'utilisation dans le code-behind d'une page WinUI
+
+        // Enregistrez une variable de session
+        SessionManager.SetSessionVariable("NomUtilisateur", "JohnDoe");
+
+// Obtenez une variable de session
+string nomUtilisateur = SessionManager.GetSessionVariable("NomUtilisateur") as string;*/
+
+
         public ObservableCollection<clients> getListeClients()
         {
             listeClients.Clear();
@@ -77,7 +117,7 @@ namespace Travail_session
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]).Substring(0,10), (string)r["email"],
+                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]).Substring(0, 10), (string)r["email"],
                         (string)r["adresse"], Convert.ToString(r["embauche"]), Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
                 }
                 r.Close();
@@ -109,7 +149,7 @@ namespace Travail_session
                 while (r.Read())
                 {
                     listeProjets.Add(new projets((string)r["numProjet"], (string)r["titre"], Convert.ToString(r["debut"]).Substring(0, 10), (string)r["description"],
-                        Convert.ToDouble(r["budget"]),Convert.ToInt32(r["nbEmploye"]),Convert.ToDouble(r["totalSalaire"]),Convert.ToInt32(r["client"]), (string)r["statut"]));
+                        Convert.ToDouble(r["budget"]), Convert.ToInt32(r["nbEmploye"]), Convert.ToDouble(r["totalSalaire"]), Convert.ToInt32(r["client"]), (string)r["statut"]));
                 }
                 r.Close();
                 con.Close();
