@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Travail_session
 {
-    internal class projets
+    public class projets
     {
         string numeroProjet;
         string titre;

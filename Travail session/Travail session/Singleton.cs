@@ -332,6 +332,40 @@ namespace Travail_session
         {
             return listeEmployes[position];
         }
+
+        public void modProjet(projets p)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_modProjet");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Nnum", p.NumeroProjet);
+                commande.Parameters.AddWithValue("Ntitre", p.Titre);
+                commande.Parameters.AddWithValue("Ndebut", p.DateDebut);
+                commande.Parameters.AddWithValue("Ndescription", p.Description);
+                commande.Parameters.AddWithValue("Nbudget", p.Budget);
+                commande.Parameters.AddWithValue("Nemploye", p.NbrEmploye);
+                commande.Parameters.AddWithValue("Ntotal", p.TotalSalaire);
+               
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
+
+
         public projets getProjet(int position)
         {
             return listeProjets[position];
