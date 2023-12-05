@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="grille">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -31,7 +31,7 @@
         <TextBlock Text="Id du Client" Grid.Column="4"/>
         <TextBlock Text="Statut" Grid.Column="5"/>
 
-        <ListView x:Name="lvProjets" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" >
+        <ListView x:Name="lvProjets" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" SelectionChanged="lvProjets_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:projets">
                     <StackPanel Orientation="Horizontal">

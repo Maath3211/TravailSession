@@ -28,5 +28,24 @@ namespace Travail_session
             this.InitializeComponent();
             lvProjets.ItemsSource = Singleton.getInstance().getListeProjet();
         }
+
+        private async void lvProjets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvProjets.SelectedItem != null)
+            {
+                modProjet dialog = new modProjet();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Modification Employe";
+                dialog.PrimaryButtonText = "Modifier";
+                //dialog.SecondaryButtonText = "Non";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                //dialog.Content = "mon contenu";
+
+                dialog.SetProjet(Singleton.getInstance().getProjet(lvProjets.SelectedIndex));
+                ContentDialogResult result = await dialog.ShowAsync();
+                lvProjets.ItemsSource = Singleton.getInstance().getListeEmploye();
+            }
+        }
     }
 }
