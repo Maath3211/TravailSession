@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -27,7 +29,9 @@ namespace Travail_session
         public MainWindow()
         {
             this.InitializeComponent();
-            mainFrame.Navigate(typeof(affichage_employe));
+            mainFrame.Navigate(typeof(affichage_projet));
+            Singleton.SetSessionVariable("NomUtilisateur", "");
+            Singleton.SetSessionVariable("Password", "");
         }
 
         private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -61,14 +65,25 @@ namespace Travail_session
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            Singleton.SetSessionVariable("NomUtilisateur", tbxTest.Text);
-            Singleton.SetSessionVariable("Password", tbxTest2.Text);
+            var sha256 = SHA256.Create();
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(tbxTest2.Text));
 
-            Singleton.getInstance().creerAdmin(tbxTest.Text, tbxTest2.Text);
+            StringBuilder sb = new StringBuilder();
+            foreach (Byte b in bytes)
+                sb.Append(b.ToString("x2"));
+
+            Singleton.SetSessionVariable("NomUtilisateur", tbxTest.Text);
+            Singleton.SetSessionVariable("Password", Convert.ToString(sb));
+            Singleton.getInstance().creerAdmin(tbxTest.Text, Convert.ToString(sb));
         }
 
         private void btnAjout2_Click(object sender, RoutedEventArgs e)
         {
+
+            if (tbxTest.Text == (string)Singleton.GetSessionVariable("NomUtilisateur") && tbxTest2.Text ==  (string)Singleton.GetSessionVariable("Password"))
+            {
+                Debug.WriteLine("Connecté");
+            }
 
             Debug.WriteLine(Singleton.GetSessionVariable("NomUtilisateur"));
             Debug.WriteLine(Singleton.GetSessionVariable("Password"));

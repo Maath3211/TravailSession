@@ -36,28 +36,14 @@ namespace Travail_session
 
         private static Dictionary<string, object> sessionVariables = new Dictionary<string, object>();
 
-        public static object GetSessionVariable(string key)
-        {
-            if (sessionVariables.ContainsKey(key))
-            {
-                return sessionVariables[key];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         public static void SetSessionVariable(string key, object value)
         {
-            if (sessionVariables.ContainsKey(key))
-            {
-                sessionVariables[key] = value;
-            }
-            else
-            {
-                sessionVariables.Add(key, value);
-            }
+            sessionVariables[key] = value;
+        }
+
+        public static object GetSessionVariable(string key)
+        {
+            return sessionVariables.ContainsKey(key) ? sessionVariables[key] : null;
         }
 
         public void creerAdmin(string nom, string pass)
