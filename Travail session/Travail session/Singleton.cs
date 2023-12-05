@@ -307,6 +307,41 @@ namespace Travail_session
         {
             return listeClients[position];
         }
+
+
+        public void modEmploye(employes e)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_modEmploye");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("Nmat", e.Matricule);
+                commande.Parameters.AddWithValue("Nnom", e.Nom);
+                commande.Parameters.AddWithValue("Nprenom", e.Prenom);
+                commande.Parameters.AddWithValue("Nnaissance", e.Naissance);
+                commande.Parameters.AddWithValue("Nemail", e.Email);
+                commande.Parameters.AddWithValue("Nadresse", e.Adresse);
+                commande.Parameters.AddWithValue("Nembauche", e.DateEmbauche);
+                commande.Parameters.AddWithValue("Nphoto", e.Photo);
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
+
+
         public employes getEmploye(int position)
         {
             return listeEmployes[position];

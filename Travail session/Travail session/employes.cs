@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Travail_session
 {
-    internal class employes
+   public class employes
     {
         string matricule;
         string nom;

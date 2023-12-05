@@ -34,7 +34,7 @@ namespace Travail_session
         {
             if (lvEmploye.SelectedItem != null)
             {
-                ModifierClient dialog = new ModifierClient();
+                modEmploye dialog = new modEmploye();
                 dialog.XamlRoot = grille.XamlRoot;
                 dialog.Title = "Modification Employe";
                 dialog.PrimaryButtonText = "Modifier";
@@ -43,7 +43,7 @@ namespace Travail_session
                 dialog.DefaultButton = ContentDialogButton.Primary;
                 //dialog.Content = "mon contenu";
 
-                dialog.SetClient(Singleton.getInstance().getClient(lvEmploye.SelectedIndex));
+                dialog.SetEmploye(Singleton.getInstance().getEmploye(lvEmploye.SelectedIndex));
                 ContentDialogResult result = await dialog.ShowAsync();
                 lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
             }
