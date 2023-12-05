@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -56,6 +57,21 @@ namespace Travail_session
                 default:
                     break;
             }
+        }
+
+        private void btnAjout_Click(object sender, RoutedEventArgs e)
+        {
+            Singleton.SetSessionVariable("NomUtilisateur", tbxTest.Text);
+            Singleton.SetSessionVariable("Password", tbxTest2.Text);
+
+            Singleton.getInstance().creerAdmin(tbxTest.Text, tbxTest2.Text);
+        }
+
+        private void btnAjout2_Click(object sender, RoutedEventArgs e)
+        {
+
+            Debug.WriteLine(Singleton.GetSessionVariable("NomUtilisateur"));
+            Debug.WriteLine(Singleton.GetSessionVariable("Password"));
         }
     }
 }

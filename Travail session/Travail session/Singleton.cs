@@ -34,44 +34,58 @@ namespace Travail_session
             return instance;
         }
 
+        private static Dictionary<string, object> sessionVariables = new Dictionary<string, object>();
 
-
-       /* public class SessionManager
+        public static object GetSessionVariable(string key)
         {
-            private static Dictionary<string, object> sessionVariables = new Dictionary<string, object>();
-
-            public static object GetSessionVariable(string key)
+            if (sessionVariables.ContainsKey(key))
             {
-                if (sessionVariables.ContainsKey(key))
-                {
-                    return sessionVariables[key];
-                }
-                else
-                {
-                    return null;
-                }
+                return sessionVariables[key];
             }
-
-            public static void SetSessionVariable(string key, object value)
+            else
             {
-                if (sessionVariables.ContainsKey(key))
-                {
-                    sessionVariables[key] = value;
-                }
-                else
-                {
-                    sessionVariables.Add(key, value);
-                }
+                return null;
             }
         }
 
-        // Exemple d'utilisation dans le code-behind d'une page WinUI
+        public static void SetSessionVariable(string key, object value)
+        {
+            if (sessionVariables.ContainsKey(key))
+            {
+                sessionVariables[key] = value;
+            }
+            else
+            {
+                sessionVariables.Add(key, value);
+            }
+        }
 
-        // Enregistrez une variable de session
-        SessionManager.SetSessionVariable("NomUtilisateur", "JohnDoe");
+        public void creerAdmin(string nom, string pass)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_creerAdmin");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("ID", "NULL");
+                commande.Parameters.AddWithValue("username", nom);
+                commande.Parameters.AddWithValue("password", pass);
 
-// Obtenez une variable de session
-string nomUtilisateur = SessionManager.GetSessionVariable("NomUtilisateur") as string;*/
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
 
 
         public ObservableCollection<clients> getListeClients()

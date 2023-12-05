@@ -29,6 +29,12 @@
             </NavigationView.MenuItems>
 
         </NavigationView>
+        <StackPanel>
+        <TextBox x:Name="tbxTest"/>
+        <TextBox x:Name="tbxTest2"/>
+        <Button x:Name="btnAjout" Content="Ajouter le client" Click="btnAjout_Click"/>
+        <Button x:Name="btnAjout2" Content="Ajouter l" Click="btnAjout2_Click"/>
+        </StackPanel>
         <Frame x:Name="mainFrame"  Grid.Row="1" Grid.Column="1"/>
     </Grid>
     
