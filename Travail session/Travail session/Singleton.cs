@@ -37,14 +37,14 @@ namespace Travail_session
             return instance;
         }
 
-        private static string sessionVariables;
+        private static bool sessionVariables;
 
-        public static void SetSessionVariable(string value)
+        public static void SetSessionVariable(bool value)
         {
             sessionVariables = value;
         }
 
-        public static string GetSessionVariable()
+        public static bool GetSessionVariable()
         {
             return sessionVariables;
         }
@@ -66,7 +66,7 @@ namespace Travail_session
                 foreach (Byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
-                Singleton.SetSessionVariable(Convert.ToString(sb));
+                Singleton.SetSessionVariable(true);
 
                 commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
@@ -89,10 +89,10 @@ namespace Travail_session
 
         public void deconnextion()
         {
-            sessionVariables = null;
+            sessionVariables = false;
         }
 
-        public bool connexion()
+        public void connexion()
         {
 
             try
@@ -117,28 +117,23 @@ namespace Travail_session
                 commande.Parameters.Add(returnParameter);
 
                 commande.ExecuteNonQuery();
-                Debug.WriteLine(returnParameter.Value);
+                Debug.WriteLine(Convert.ToBoolean(returnParameter.Value));
                 
                 con.Close();
-                return Convert.ToBoolean(returnParameter.Value);
+                SetSessionVariable(Convert.ToBoolean(returnParameter.Value));
                 
             }
             catch (MySqlException ex)
             {
                 if (con.State == System.Data.ConnectionState.Open)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    Debug.WriteLine(ex.Message);
                     con.Close();
                 }
-
+                
             }
-            if (GetSessionVariable == null) return false;
-            else return true;
+            
         }
-
-
-
-
 
 
         public ObservableCollection<clients> getListeClients()
