@@ -27,7 +27,7 @@ namespace Travail_session
         {
             this.InitializeComponent();
             lvClients.ItemsSource = Singleton.getInstance().getListeClients();
-            Singleton.getInstance().connexion();
+            Singleton.getInstance().connexion("1");
         }
 
         

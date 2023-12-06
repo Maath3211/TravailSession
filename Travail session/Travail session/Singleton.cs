@@ -92,7 +92,7 @@ namespace Travail_session
             sessionVariables = false;
         }
 
-        public void connexion()
+        public void connexion(string pass)
         {
 
             try
@@ -102,7 +102,7 @@ namespace Travail_session
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
                 var sha256 = SHA256.Create();
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes("1"));
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
 
                 StringBuilder sb = new StringBuilder();
                 foreach (Byte b in bytes)

@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -27,9 +28,20 @@ namespace Travail_session
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            var erreur = false;
+            if (string.IsNullOrEmpty(tbxUser.Text))
+            {
+                erreur = true;
+                tbxUser.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxPassword.Text))
+            {
+                erreur = true;
+                tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
 
-
-
+            if (!erreur) Singleton.getInstance().connexion(tbxPassword.Text);
+            else args.Cancel = true;
         }
 
         private void ContentDialog_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
