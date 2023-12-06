@@ -12,7 +12,8 @@
     <Grid x:Name="grille">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+           
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -22,14 +23,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Titre" Grid.Column="0" Margin="115,0,0,0"/>
-        <TextBlock Text="Date du debut" Grid.Column="1" Margin="45,0,0,0"/>
-        <TextBlock Text="Description" Grid.Column="2" Margin="45,0,0,0"/>
-        <TextBlock Text="Nombre d'employé" Grid.Column="3"/>
-        <TextBlock Text="Id du Client" Grid.Column="4"/>
-        <TextBlock Text="Statut" Grid.Column="5"/>
+        <TextBlock Text="Titre" Grid.Column="1" Margin="115,0,0,0"/>
+        <TextBlock Text="Date du debut" Grid.Column="2" Margin="45,0,0,0"/>
+        <TextBlock Text="Description" Grid.Column="3" Margin="45,0,0,0"/>
+        <TextBlock Text="Nombre d'employé" Grid.Column="4"/>
+        <TextBlock Text="Id du Client" Grid.Column="5"/>
+        <TextBlock Text="Statut" Grid.Column="6"/>
+    
 
         <ListView x:Name="lvProjets" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" SelectionChanged="lvProjets_SelectionChanged">
             <ListView.ItemTemplate>
@@ -41,9 +44,10 @@
                         <TextBlock Text="{x:Bind NbrEmploye}" Margin="40,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind IdClient}" Margin="40,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind Statut}" Margin="40,0,0,0" FontSize="18"/>
-             
+
                     </StackPanel>
                 </DataTemplate>
+
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
