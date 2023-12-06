@@ -30,8 +30,6 @@ namespace Travail_session
         {
             this.InitializeComponent();
             mainFrame.Navigate(typeof(affichage_projet));
-            Singleton.SetSessionVariable("NomUtilisateur", "");
-            Singleton.SetSessionVariable("Password", "");
         }
 
         private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -65,27 +63,18 @@ namespace Travail_session
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-            var sha256 = SHA256.Create();
-            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(tbxTest2.Text));
-
-            StringBuilder sb = new StringBuilder();
-            foreach (Byte b in bytes)
-                sb.Append(b.ToString("x2"));
-
-            Singleton.SetSessionVariable("NomUtilisateur", tbxTest.Text);
-            Singleton.SetSessionVariable("Password", Convert.ToString(sb));
-            Singleton.getInstance().creerAdmin(tbxTest.Text, Convert.ToString(sb));
+            
+            Singleton.getInstance().creerAdmin(tbxTest2.Text);
         }
 
         private void btnAjout2_Click(object sender, RoutedEventArgs e)
         {
 
-            if (tbxTest.Text == (string)Singleton.GetSessionVariable("NomUtilisateur") && tbxTest2.Text ==  (string)Singleton.GetSessionVariable("Password"))
+            if (tbxTest2.Text ==  (string)Singleton.GetSessionVariable("Password"))
             {
                 Debug.WriteLine("Connecté");
             }
 
-            Debug.WriteLine(Singleton.GetSessionVariable("NomUtilisateur"));
             Debug.WriteLine(Singleton.GetSessionVariable("Password"));
         }
     }

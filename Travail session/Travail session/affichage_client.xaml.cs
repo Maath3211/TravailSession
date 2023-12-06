@@ -29,22 +29,27 @@ namespace Travail_session
             lvClients.ItemsSource = Singleton.getInstance().getListeClients();
         }
 
+        
         public async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lvClients.SelectedItem != null) { 
-                ModifierClient dialog = new ModifierClient();
-            dialog.XamlRoot = grille.XamlRoot;
-            dialog.Title = "Modification client";
-            dialog.PrimaryButtonText = "Modifier";
-            //dialog.SecondaryButtonText = "Non";
-            dialog.CloseButtonText = "Annuler";
-            dialog.DefaultButton = ContentDialogButton.Primary;
-            //dialog.Content = "mon contenu";
+            if (Singleton.GetSessionVariable("Password") != null)
+            {
+                if (lvClients.SelectedItem != null)
+                {
+                    ModifierClient dialog = new ModifierClient();
+                    dialog.XamlRoot = grille.XamlRoot;
+                    dialog.Title = "Modification client";
+                    dialog.PrimaryButtonText = "Modifier";
+                    //dialog.SecondaryButtonText = "Non";
+                    dialog.CloseButtonText = "Annuler";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
+                    //dialog.Content = "mon contenu";
 
-             dialog.SetClient(Singleton.getInstance().getClient(lvClients.SelectedIndex));
-            ContentDialogResult result = await dialog.ShowAsync();
-            lvClients.ItemsSource = Singleton.getInstance().getListeClients();
+                    dialog.SetClient(Singleton.getInstance().getClient(lvClients.SelectedIndex));
+                    ContentDialogResult result = await dialog.ShowAsync();
+                    lvClients.ItemsSource = Singleton.getInstance().getListeClients();
                 }
+            }
         }
     }
 }

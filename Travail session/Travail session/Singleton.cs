@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,7 +47,7 @@ namespace Travail_session
             return sessionVariables.ContainsKey(key) ? sessionVariables[key] : null;
         }
 
-        public void creerAdmin(string nom, string pass)
+        public void creerAdmin(string pass)
         {
             try
             {
@@ -54,13 +55,24 @@ namespace Travail_session
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
                 commande.Parameters.AddWithValue("ID", "NULL");
-                commande.Parameters.AddWithValue("username", nom);
-                commande.Parameters.AddWithValue("password", pass);
+                commande.Parameters.AddWithValue("username", "admin");
+
+                var sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
+
+                StringBuilder sb = new StringBuilder();
+                foreach (Byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+
+                Singleton.SetSessionVariable("Password", Convert.ToString(sb));
+
+                commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
                 con.Open();
                 commande.Prepare();
                 commande.ExecuteNonQuery();
                 con.Close();
+
             }
             catch (MySqlException ex)
             {
@@ -72,6 +84,15 @@ namespace Travail_session
 
             }
         }
+
+        public bool connexion()
+        {
+            return true;
+        }
+
+
+
+
 
 
         public ObservableCollection<clients> getListeClients()
