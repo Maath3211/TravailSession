@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAppSDK.Runtime.Packages;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.WindowsAppSDK.Runtime.Packages;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -35,16 +36,16 @@ namespace Travail_session
             return instance;
         }
 
-        private static Dictionary<string, object> sessionVariables = new Dictionary<string, object>();
+        private static string sessionVariables;
 
-        public static void SetSessionVariable(string key, object value)
+        public static void SetSessionVariable(string value)
         {
-            sessionVariables[key] = value;
+            sessionVariables = value;
         }
 
-        public static object GetSessionVariable(string key)
+        public static string GetSessionVariable()
         {
-            return sessionVariables.ContainsKey(key) ? sessionVariables[key] : null;
+            return sessionVariables;
         }
 
         public void creerAdmin(string pass)
@@ -64,7 +65,7 @@ namespace Travail_session
                 foreach (Byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
-                Singleton.SetSessionVariable("Password", Convert.ToString(sb));
+                Singleton.SetSessionVariable(Convert.ToString(sb));
 
                 commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
@@ -85,9 +86,15 @@ namespace Travail_session
             }
         }
 
+        public void deconnextion()
+        {
+            sessionVariables = null;
+        }
+
         public bool connexion()
         {
-            return true;
+            if (GetSessionVariable == null) return false;
+            else return true;
         }
 
 
@@ -368,7 +375,7 @@ namespace Travail_session
                 commande.Parameters.AddWithValue("Nbudget", p.Budget);
                 commande.Parameters.AddWithValue("Nemploye", p.NbrEmploye);
                 commande.Parameters.AddWithValue("Ntotal", p.TotalSalaire);
-               
+
 
                 con.Open();
                 commande.Prepare();

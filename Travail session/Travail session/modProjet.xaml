@@ -23,7 +23,5 @@
             <x:String>5</x:String>
         </ComboBox>
         <TextBox x:Name="tbxTotalSalaire" Header="Entrez l'adresse" Margin="5"/>
-        <!--<TextBox x:Name="tbxClient" Header="Entrez le numéro de téléphone" Margin="5"/>-->
-        <!--<TextBox x:Name="tbxStatut" Header="Entrez l'adresse email" Margin="5"/>-->
     </StackPanel>
 </ContentDialog>
