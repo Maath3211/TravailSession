@@ -32,7 +32,7 @@ namespace Travail_session
         
         public async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Singleton.GetSessionVariable("Password") != null)
+            if (Singleton.GetSessionVariable() != null)
             {
                 if (lvClients.SelectedItem != null)
                 {

@@ -69,13 +69,7 @@ namespace Travail_session
 
         private void btnAjout2_Click(object sender, RoutedEventArgs e)
         {
-
-            if (tbxTest2.Text ==  (string)Singleton.GetSessionVariable("Password"))
-            {
-                Debug.WriteLine("Connecté");
-            }
-
-            Debug.WriteLine(Singleton.GetSessionVariable("Password"));
+            Debug.WriteLine(Singleton.GetSessionVariable());
         }
     }
 }
