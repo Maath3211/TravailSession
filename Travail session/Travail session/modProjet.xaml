@@ -12,9 +12,9 @@
 
     <StackPanel>
         <TextBox x:Name="tbxTitre" Header="Entrez le nom du client" Margin="5"/>
-        <TextBox x:Name="tbxDebut" Header="Entrez la date de debut" Margin="5"/>
+        <TextBox x:Name="tbxDebut" Header="Entrez l'adresse" Margin="5"/>
         <TextBox x:Name="tbxDescription" Header="Entrez le numéro de téléphone" Margin="5"/>
-        <TextBox x:Name="tbxBudget" Header="Entrez le budget" Margin="5"/>
+        <TextBox x:Name="tbxBudget" Header="Entrez l'adresse email" Margin="5"/>
         <ComboBox x:Name="cbEmploye" Header="Nombre d'employé" Width="200">
             <x:String >1</x:String>
             <x:String>2</x:String>
