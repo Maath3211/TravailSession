@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -93,6 +94,44 @@ namespace Travail_session
 
         public bool connexion()
         {
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("f_connexion");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                var sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes("1"));
+
+                StringBuilder sb = new StringBuilder();
+                foreach (Byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                commande.Parameters.AddWithValue("utilisateur", "admin");
+                commande.Parameters.AddWithValue("mot_de_passe", Convert.ToString(sb));
+
+                MySqlParameter returnParameter = new MySqlParameter();
+                returnParameter.Direction = System.Data.ParameterDirection.ReturnValue;
+                commande.Parameters.Add(returnParameter);
+
+                commande.ExecuteNonQuery();
+                Debug.WriteLine(returnParameter.Value);
+                
+                con.Close();
+                return Convert.ToBoolean(returnParameter.Value);
+                
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
             if (GetSessionVariable == null) return false;
             else return true;
         }
