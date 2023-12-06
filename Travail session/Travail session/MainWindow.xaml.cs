@@ -61,15 +61,6 @@ namespace Travail_session
             }
         }
 
-        private void btnAjout_Click(object sender, RoutedEventArgs e)
-        {
-            
-            Singleton.getInstance().creerAdmin(tbxTest2.Text);
-        }
-
-        private void btnAjout2_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine(Singleton.GetSessionVariable());
-        }
+       
     }
 }

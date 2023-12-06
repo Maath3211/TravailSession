@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -36,14 +37,14 @@ namespace Travail_session
             return instance;
         }
 
-        private static string sessionVariables;
+        private static bool sessionVariables;
 
-        public static void SetSessionVariable(string value)
+        public static void SetSessionVariable(bool value)
         {
             sessionVariables = value;
         }
 
-        public static string GetSessionVariable()
+        public static bool GetSessionVariable()
         {
             return sessionVariables;
         }
@@ -65,7 +66,7 @@ namespace Travail_session
                 foreach (Byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
-                Singleton.SetSessionVariable(Convert.ToString(sb));
+                Singleton.SetSessionVariable(true);
 
                 commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
@@ -88,18 +89,51 @@ namespace Travail_session
 
         public void deconnextion()
         {
-            sessionVariables = null;
+            sessionVariables = false;
         }
 
-        public bool connexion()
+        public void connexion()
         {
-            if (GetSessionVariable == null) return false;
-            else return true;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("f_connexion");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                var sha256 = SHA256.Create();
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes("1"));
+
+                StringBuilder sb = new StringBuilder();
+                foreach (Byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                commande.Parameters.AddWithValue("utilisateur", "admin");
+                commande.Parameters.AddWithValue("mot_de_passe", Convert.ToString(sb));
+
+                MySqlParameter returnParameter = new MySqlParameter();
+                returnParameter.Direction = System.Data.ParameterDirection.ReturnValue;
+                commande.Parameters.Add(returnParameter);
+
+                commande.ExecuteNonQuery();
+                Debug.WriteLine(Convert.ToBoolean(returnParameter.Value));
+                
+                con.Close();
+                SetSessionVariable(Convert.ToBoolean(returnParameter.Value));
+                
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+                
+            }
+            
         }
-
-
-
-
 
 
         public ObservableCollection<clients> getListeClients()

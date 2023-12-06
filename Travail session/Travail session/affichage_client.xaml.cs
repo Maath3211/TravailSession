@@ -27,12 +27,13 @@ namespace Travail_session
         {
             this.InitializeComponent();
             lvClients.ItemsSource = Singleton.getInstance().getListeClients();
+            Singleton.getInstance().connexion();
         }
 
         
         public async void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Singleton.GetSessionVariable() != null)
+            if (Singleton.GetSessionVariable() == true)
             {
                 if (lvClients.SelectedItem != null)
                 {
