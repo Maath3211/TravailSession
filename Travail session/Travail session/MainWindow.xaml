@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <NavigationView PaneDisplayMode="Left" PaneTitle="Projet Final" x:Name="navView" Grid.Row="1" SelectionChanged="navView_SelectionChanged">
+        <NavigationView PaneDisplayMode="Left" PaneTitle="Projet Final" x:Name="navView" Grid.Row="1" SelectionChanged="navView_SelectionChanged" IsSettingsVisible="False">
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Afficher Client" x:Name="iAffClient" Icon="View"/>
                 <NavigationViewItem Content="Ajouter Client" x:Name="iAjoutClient" Icon="Add"/>
@@ -26,7 +26,13 @@
                 <NavigationViewItem Content="Ajouter Employé" x:Name="iAjoutEmploye" Icon="Add"/>
                 <NavigationViewItem Content="Afficher Projet" x:Name="iAjouProjet" Icon="View"/>
                 <NavigationViewItem Content="Ajouter Projet" x:Name="iAjoutProjet" Icon="Add"/>
+          
+           
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="connexion" x:Name="iconnexion" Icon="Switch" />
+                <NavigationViewItem Content="Aide" x:Name="iAide" Icon="Help" />
+            </NavigationView.FooterMenuItems>
 
         </NavigationView>
         <Frame x:Name="mainFrame"  Grid.Row="1" Grid.Column="1"/>
