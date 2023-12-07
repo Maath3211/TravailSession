@@ -21,6 +21,7 @@ namespace Travail_session
         ObservableCollection<projets> listeProjets;
         static Singleton instance = null;
         MySqlConnection con;
+        Window fenetre;
         public Singleton()
         {
             con = new MySqlConnection(connexionBD.chaineConnexion);
