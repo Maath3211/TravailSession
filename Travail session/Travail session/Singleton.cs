@@ -21,7 +21,6 @@ namespace Travail_session
         ObservableCollection<projets> listeProjets;
         static Singleton instance = null;
         MySqlConnection con;
-        Window fenetre;
         public Singleton()
         {
             con = new MySqlConnection(connexionBD.chaineConnexion);
@@ -39,7 +38,7 @@ namespace Travail_session
             return instance;
         }
 
-        private bool sessionVariables;
+        
 
         public void SetSessionVariable(bool value)
         {
@@ -119,7 +118,6 @@ namespace Travail_session
                 commande.Parameters.Add(returnParameter);
 
                 commande.ExecuteNonQuery();
-                Debug.WriteLine(Convert.ToBoolean(returnParameter.Value));
                 
                 con.Close();
                 SetSessionVariable(Convert.ToBoolean(returnParameter.Value));
