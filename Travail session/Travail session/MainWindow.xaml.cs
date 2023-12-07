@@ -32,11 +32,12 @@ namespace Travail_session
             mainFrame.Navigate(typeof(affichage_projet));
         }
 
-        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            var item = (NavigationViewItem)args.SelectedItem;
 
-            switch (item.Name)
+            var item = args.InvokedItemContainer.Name as string;
+
+           switch (item)
             {
                 case "iAffClient":
                     mainFrame.Navigate(typeof(affichage_client));
@@ -48,19 +49,51 @@ namespace Travail_session
                     mainFrame.Navigate(typeof(affichage_projet));
                     break;
                 case "iAjoutClient":
-                    mainFrame.Navigate(typeof(ajoutClient));
+                    if(Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutClient));
                     break;
                 case "iAjoutEmploye":
-                    mainFrame.Navigate(typeof(ajouteEmploye));
+                    if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajouteEmploye));
                     break;
                 case "iAjoutProjet":
-                    mainFrame.Navigate(typeof(ajoutProjet));
+                    if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutProjet));
+                    break;
+                case "iConnexion":
+                    click();
+                    break;
+                case "iDeconnexion":
+                    Singleton.getInstance().deconnextion();
                     break;
                 default:
                     break;
             }
         }
 
-       
+        public async void click()
+        {
+            if (Singleton.getInstance().GetSessionVariable() == false)
+            {
+                connexion dialog = new connexion();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Connexion";
+                dialog.PrimaryButtonText = "Connexion";
+                //dialog.SecondaryButtonText = "Non";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                //dialog.Content = "mon contenu";
+                ContentDialogResult result = await dialog.ShowAsync();
+            }
+            else
+            {
+                connexion dialog = new connexion();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Déja connecté";
+                //dialog.PrimaryButtonText = "Connexion";
+                dialog.CloseButtonText = "Ok";
+                dialog.DefaultButton = ContentDialogButton.Close;
+                ContentDialogResult result = await dialog.ShowAsync();
+            }
+        }
+
+
     }
 }

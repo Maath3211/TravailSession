@@ -37,14 +37,14 @@ namespace Travail_session
             return instance;
         }
 
-        private static bool sessionVariables;
+        private bool sessionVariables;
 
-        public static void SetSessionVariable(bool value)
+        public void SetSessionVariable(bool value)
         {
             sessionVariables = value;
         }
 
-        public static bool GetSessionVariable()
+        public bool GetSessionVariable()
         {
             return sessionVariables;
         }
@@ -66,7 +66,7 @@ namespace Travail_session
                 foreach (Byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
-                Singleton.SetSessionVariable(true);
+                Singleton.getInstance().SetSessionVariable(true);
 
                 commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
@@ -92,7 +92,7 @@ namespace Travail_session
             sessionVariables = false;
         }
 
-        public void connexion()
+        public void connexion(string pass)
         {
 
             try
@@ -102,7 +102,7 @@ namespace Travail_session
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
 
                 var sha256 = SHA256.Create();
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes("1"));
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
 
                 StringBuilder sb = new StringBuilder();
                 foreach (Byte b in bytes)
