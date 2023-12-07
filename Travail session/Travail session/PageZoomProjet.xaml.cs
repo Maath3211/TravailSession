@@ -52,11 +52,28 @@ namespace Travail_session
             }
         }
 
+        private async void modifier_Click(object sender, RoutedEventArgs e)
+        {
+            modProjet dialog = new modProjet();
+            dialog.XamlRoot = grille.XamlRoot;
+            dialog.Title = "Modification Employe";
+            dialog.PrimaryButtonText = "Modifier";
+            //dialog.SecondaryButtonText = "Non";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            //dialog.Content = "mon contenu";
 
-
-
-
-
-
+            dialog.SetProjet(Singleton.getInstance().getListeProjet()[position]);
+            ContentDialogResult result = await dialog.ShowAsync();
+            projets p = Singleton.getInstance().getListeProjet()[position];
+            tblTitre.Text = p.Titre;
+            tblDebut.Text = p.DateDebut;
+            tblDescription.Text = p.Description;
+            tblBudget.Text = Convert.ToString(p.Budget);
+            tblNbr.Text = Convert.ToString(p.NbrEmploye);
+            tblTotal.Text = Convert.ToString(p.TotalSalaire);
+            tblClient.Text = Convert.ToString(p.IdClient);
+            tblStatut.Text = p.Statut;
+        }
     }
 }

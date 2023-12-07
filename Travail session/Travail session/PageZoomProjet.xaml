@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="grille">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
 
@@ -36,5 +36,6 @@
         <TextBlock x:Name="tblTotal" FontSize="40" Grid.Column="5" ></TextBlock>
         <TextBlock x:Name="tblClient" FontSize="40" Grid.Column="6" ></TextBlock>
         <TextBlock x:Name="tblStatut" FontSize="40" Grid.Column="7" ></TextBlock>
+        <Button x:Name="modifier" Click="modifier_Click" />
     </Grid>
 </Page>

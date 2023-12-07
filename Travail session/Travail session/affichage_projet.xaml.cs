@@ -44,19 +44,7 @@ namespace Travail_session
 
 
 
-                /*  modProjet dialog = new modProjet();
-                  dialog.XamlRoot = grille.XamlRoot;
-                  dialog.Title = "Modification Employe";
-                  dialog.PrimaryButtonText = "Modifier";
-                  //dialog.SecondaryButtonText = "Non";
-                  dialog.CloseButtonText = "Annuler";
-                  dialog.DefaultButton = ContentDialogButton.Primary;
-                  //dialog.Content = "mon contenu";
-
-                  dialog.SetProjet(Singleton.getInstance().getProjet(lvProjets.SelectedIndex));
-                  ContentDialogResult result = await dialog.ShowAsync();
-                  lvProjets.ItemsSource = Singleton.getInstance().getListeEmploye();
-                */
+               
             }
         }
 
