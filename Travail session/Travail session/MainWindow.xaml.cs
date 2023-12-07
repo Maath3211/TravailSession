@@ -58,7 +58,7 @@ namespace Travail_session
                     if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutProjet));
                     break;
                 case "iConnexion":
-                    click();
+                    conn();
                     break;
                 case "iDeconnexion":
                     Singleton.getInstance().deconnextion();
@@ -68,7 +68,7 @@ namespace Travail_session
             }
         }
 
-        public async void click()
+        public async void conn()
         {
             if (Singleton.getInstance().GetSessionVariable() == false)
             {
