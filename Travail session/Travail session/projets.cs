@@ -40,5 +40,13 @@ namespace Travail_session
         public double TotalSalaire { get => totalSalaire; set => totalSalaire = value; }
         public int IdClient { get => idClient; set => idClient = value; }
         public string Statut { get => statut; set => statut = value; }
+
+        public  string ToStringCSV()
+        {
+           
+            return numeroProjet + ";" + Titre +";" + DateDebut + ";" + Description + ";" + Budget + ";" +NbrEmploye + ";" + TotalSalaire + ";" + IdClient + ";" + Statut;
+        }
+
+
     }
 }

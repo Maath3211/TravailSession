@@ -25,8 +25,8 @@ namespace Travail_session
             this.matricule = matricule;
             this.nom = nom;
             this.prenom = prenom;
-            this.email = email;
             this.naissance = naissance;
+            this.email = email;
             this.adresse = adresse;
             this.dateEmbauche = dateEmbauche;
             this.tauxHoraire = tauxHoraire;

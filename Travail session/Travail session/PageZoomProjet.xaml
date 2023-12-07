@@ -26,16 +26,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        
-        <TextBlock x:Name="tblTitre" FontSize="40" Grid.Column="0" ></TextBlock>
-        <TextBlock x:Name="tblDebut" FontSize="40" Grid.Column="1" ></TextBlock>
-        <TextBlock x:Name="tblDescription" FontSize="40" Grid.Column="2" ></TextBlock>
-        <TextBlock x:Name="tblBudget" FontSize="40" Grid.Column="3" ></TextBlock>
-        <TextBlock x:Name="tblNbr" FontSize="40" Grid.Column="4" ></TextBlock>
-        <TextBlock x:Name="tblTotal" FontSize="40" Grid.Column="5" ></TextBlock>
-        <TextBlock x:Name="tblClient" FontSize="40" Grid.Column="6" ></TextBlock>
-        <TextBlock x:Name="tblStatut" FontSize="40" Grid.Column="7" ></TextBlock>
-        <Button x:Name="modifier" Click="modifier_Click" />
+
+
+        <TextBlock x:Name="tblTitre" FontSize="40" Grid.Column="0" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblDebut" FontSize="40" Grid.Column="1" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblDescription" FontSize="40" Grid.Column="2" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblBudget" FontSize="40" Grid.Column="3" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblNbr" FontSize="40" Grid.Column="4" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblTotal" FontSize="40" Grid.Column="5" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblClient" FontSize="40" Grid.Column="6" Grid.Row="1" ></TextBlock>
+        <TextBlock x:Name="tblStatut" FontSize="40" Grid.Column="7" Grid.Row="1" ></TextBlock>
+        <Button x:Name="modifier" Click="modifier_Click" Grid.Row="0" Height="100" Visibility="Collapsed">Modifier</Button>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.UI.Xaml;
 using Microsoft.WindowsAppSDK.Runtime.Packages;
 using MySql.Data.MySqlClient;
 using System;
@@ -20,6 +21,7 @@ namespace Travail_session
         ObservableCollection<projets> listeProjets;
         static Singleton instance = null;
         MySqlConnection con;
+        Window fenetre;
         public Singleton()
         {
             con = new MySqlConnection(connexionBD.chaineConnexion);
@@ -179,7 +181,7 @@ namespace Travail_session
                 MySqlDataReader r = commande.ExecuteReader();
                 while (r.Read())
                 {
-                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], Convert.ToString(r["naissance"]).Substring(0, 10), (string)r["email"],
+                    listeEmployes.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], (string)r["email"], Convert.ToString(r["naissance"]).Substring(0, 10),
                         (string)r["adresse"], Convert.ToString(r["embauche"]), Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
                 }
                 r.Close();
@@ -431,6 +433,12 @@ namespace Travail_session
         public projets getProjet(int position)
         {
             return listeProjets[position];
+        }
+
+        public Window Fenetre
+        {
+            get { return fenetre; }
+            set { fenetre = value; }
         }
 
     }
