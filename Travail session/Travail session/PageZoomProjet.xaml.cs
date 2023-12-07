@@ -26,7 +26,11 @@ namespace Travail_session
         public PageZoomProjet()
         {
             this.InitializeComponent();
-        }
+            if (Singleton.getInstance().GetSessionVariable())
+            {
+                modifier.Visibility = Visibility.Visible;
+            }
+            }
         int position = -1;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -54,6 +58,10 @@ namespace Travail_session
 
         private async void modifier_Click(object sender, RoutedEventArgs e)
         {
+            if(Singleton.getInstance().GetSessionVariable())
+            {
+
+         
             modProjet dialog = new modProjet();
             dialog.XamlRoot = grille.XamlRoot;
             dialog.Title = "Modification Employe";
@@ -73,7 +81,8 @@ namespace Travail_session
             tblNbr.Text = Convert.ToString(p.NbrEmploye);
             tblTotal.Text = Convert.ToString(p.TotalSalaire);
             tblClient.Text = Convert.ToString(p.IdClient);
-            tblStatut.Text = p.Statut;
+            tblStatut.Text = p.Statut;   
+            }
         }
     }
 }

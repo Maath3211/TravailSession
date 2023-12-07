@@ -26,6 +26,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Button x:Name="btEcrireCsv" Click="btEcrireCsv_Click" Grid.Column="0">Écrire dans le fichier csv</Button>
         <TextBlock Text="Titre" Grid.Column="1" Margin="115,0,0,0"/>
         <TextBlock Text="Date du debut" Grid.Column="2" Margin="45,0,0,0"/>
         <TextBlock Text="Description" Grid.Column="3" Margin="45,0,0,0"/>

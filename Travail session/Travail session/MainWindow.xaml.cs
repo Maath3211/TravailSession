@@ -30,6 +30,7 @@ namespace Travail_session
         {
             this.InitializeComponent();
             mainFrame.Navigate(typeof(affichage_projet));
+            Singleton.getInstance().Fenetre = this;
         }
 
         private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
