@@ -32,20 +32,23 @@ namespace Travail_session
 
         private async void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lvEmploye.SelectedItem != null)
+            if (Singleton.getInstance().GetSessionVariable())
             {
-                modEmploye dialog = new modEmploye();
-                dialog.XamlRoot = grille.XamlRoot;
-                dialog.Title = "Modification Employe";
-                dialog.PrimaryButtonText = "Modifier";
-                //dialog.SecondaryButtonText = "Non";
-                dialog.CloseButtonText = "Annuler";
-                dialog.DefaultButton = ContentDialogButton.Primary;
-                //dialog.Content = "mon contenu";
+                if (lvEmploye.SelectedItem != null)
+                {
+                    modEmploye dialog = new modEmploye();
+                    dialog.XamlRoot = grille.XamlRoot;
+                    dialog.Title = "Modification Employe";
+                    dialog.PrimaryButtonText = "Modifier";
+                    //dialog.SecondaryButtonText = "Non";
+                    dialog.CloseButtonText = "Annuler";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
+                    //dialog.Content = "mon contenu";
 
-                dialog.SetEmploye(Singleton.getInstance().getEmploye(lvEmploye.SelectedIndex));
-                ContentDialogResult result = await dialog.ShowAsync();
-                lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
+                    dialog.SetEmploye(Singleton.getInstance().getEmploye(lvEmploye.SelectedIndex));
+                    ContentDialogResult result = await dialog.ShowAsync();
+                    lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
+                }
             }
         }
     }
