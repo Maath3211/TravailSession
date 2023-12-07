@@ -39,6 +39,7 @@ namespace Travail_session
             tbxAdresse.Text = Convert.ToString(e.Adresse);
             tbxEmbauche.Text = Convert.ToString(e.DateEmbauche);
             tbxPhoto.Text = Convert.ToString(e.Photo);
+            cbStatut.Text = Convert.ToString(e.Statut);
             Debug.WriteLine(tbxNaissance.Text);
            
         }
@@ -87,7 +88,7 @@ namespace Travail_session
                 tbxPhoto.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
-            if (!erreur) Singleton.getInstance().modEmploye(new employes(e.Matricule, tbxNom.Text, tbxPrenom.Text, tbxNaissance.Text, tbxEmail.Text, tbxAdresse.Text,tbxEmbauche.Text,e.TauxHoraire,tbxPhoto.Text,e.Statut));
+            if (!erreur) Singleton.getInstance().modEmploye(new employes(e.Matricule, tbxNom.Text, tbxPrenom.Text, tbxNaissance.Text, tbxEmail.Text, tbxAdresse.Text,tbxEmbauche.Text,e.TauxHoraire,tbxPhoto.Text,cbStatut.Text));
             else args.Cancel = true;
 
 
