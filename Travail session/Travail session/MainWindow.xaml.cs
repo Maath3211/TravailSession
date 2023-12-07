@@ -49,13 +49,13 @@ namespace Travail_session
                     mainFrame.Navigate(typeof(affichage_projet));
                     break;
                 case "iAjoutClient":
-                    mainFrame.Navigate(typeof(ajoutClient));
+                    if(Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutClient));
                     break;
                 case "iAjoutEmploye":
-                    mainFrame.Navigate(typeof(ajouteEmploye));
+                    if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajouteEmploye));
                     break;
                 case "iAjoutProjet":
-                    mainFrame.Navigate(typeof(ajoutProjet));
+                    if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutProjet));
                     break;
                 case "iConnexion":
                     click();
@@ -70,7 +70,7 @@ namespace Travail_session
 
         public async void click()
         {
-            if (Singleton.GetSessionVariable() == false)
+            if (Singleton.getInstance().GetSessionVariable() == false)
             {
                 connexion dialog = new connexion();
                 dialog.XamlRoot = grille.XamlRoot;
@@ -86,12 +86,10 @@ namespace Travail_session
             {
                 connexion dialog = new connexion();
                 dialog.XamlRoot = grille.XamlRoot;
-                dialog.Title = "Connexion";
-                dialog.PrimaryButtonText = "Connexion";
-                //dialog.SecondaryButtonText = "Non";
-                dialog.CloseButtonText = "Annuler";
-                dialog.DefaultButton = ContentDialogButton.Primary;
-                //dialog.Content = "mon contenu";
+                dialog.Title = "Déja connecté";
+                //dialog.PrimaryButtonText = "Connexion";
+                dialog.CloseButtonText = "Ok";
+                dialog.DefaultButton = ContentDialogButton.Close;
                 ContentDialogResult result = await dialog.ShowAsync();
             }
         }

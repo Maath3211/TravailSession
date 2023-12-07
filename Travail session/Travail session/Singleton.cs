@@ -37,14 +37,14 @@ namespace Travail_session
             return instance;
         }
 
-        private static bool sessionVariables;
+        private bool sessionVariables;
 
-        public static void SetSessionVariable(bool value)
+        public void SetSessionVariable(bool value)
         {
             sessionVariables = value;
         }
 
-        public static bool GetSessionVariable()
+        public bool GetSessionVariable()
         {
             return sessionVariables;
         }
@@ -66,7 +66,7 @@ namespace Travail_session
                 foreach (Byte b in bytes)
                     sb.Append(b.ToString("x2"));
 
-                Singleton.SetSessionVariable(true);
+                Singleton.getInstance().SetSessionVariable(true);
 
                 commande.Parameters.AddWithValue("password", Convert.ToString(sb));
 
