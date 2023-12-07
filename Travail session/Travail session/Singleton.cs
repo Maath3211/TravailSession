@@ -22,6 +22,7 @@ namespace Travail_session
         static Singleton instance = null;
         MySqlConnection con;
         Window fenetre;
+        bool sessionVariables = false;
         public Singleton()
         {
             con = new MySqlConnection(connexionBD.chaineConnexion);
