@@ -26,21 +26,33 @@ namespace Travail_session
         public modEmploye()
         {
             this.InitializeComponent();
+            
+            
         }
 
         public void SetEmploye(employes employe)
         {
             e = employe;
-     
+            tbxMat.Text = Convert.ToString(e.Matricule);
             tbxNom.Text = Convert.ToString(e.Nom);
             tbxPrenom.Text = Convert.ToString(e.Prenom);
+            tbxNaissance.Text = Convert.ToString(e.Naissance);
             tbxEmail.Text = Convert.ToString(e.Email);
             tbxAdresse.Text = Convert.ToString(e.Adresse);
             tbxTaux.Text = Convert.ToString(e.TauxHoraire);
+            tbxEmbauche.Text = Convert.ToString(e.DateEmbauche);
             tbxPhoto.Text = Convert.ToString(e.Photo);
-            Debug.WriteLine(tbxNaissance.Text);
-           
-           
+
+            DateTime dateEmbauche = Convert.ToDateTime(e.DateEmbauche);
+            TimeSpan difference = DateTime.Today - dateEmbauche;
+            if (difference.TotalDays >= 1095)
+            {
+                cbStatut.Items.Add("Permanent");
+            }
+
+            cbStatut.SelectedValue = Convert.ToString(e.Statut);
+
+            
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -81,8 +93,7 @@ namespace Travail_session
                 erreur = true;
                 tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
             }
-
-            if (!erreur) Singleton.getInstance().modEmploye(new employes(e.Matricule, tbxNom.Text, tbxPrenom.Text, tbxNaissance.Text, tbxEmail.Text, tbxAdresse.Text,tbxEmbauche.Text,e.TauxHoraire,tbxPhoto.Text,e.Statut));
+            if (!erreur) Singleton.getInstance().modEmploye(new employes(tbxMat.Text, tbxNom.Text, tbxPrenom.Text, tbxNaissance.Text, tbxEmail.Text, tbxAdresse.Text,tbxEmbauche.Text,Convert.ToDouble(tbxTaux.Text),tbxPhoto.Text, (string)cbStatut.SelectedValue));
             else args.Cancel = true;
 
 

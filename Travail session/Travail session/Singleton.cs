@@ -363,7 +363,7 @@ namespace Travail_session
         {
             try
             {
-                MySqlCommand commande = new MySqlCommand("p_modEmploye");
+                MySqlCommand commande = new MySqlCommand("modEmploye");
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
                 commande.Parameters.AddWithValue("Nmat", e.Matricule);
@@ -373,8 +373,9 @@ namespace Travail_session
                 commande.Parameters.AddWithValue("Nemail", e.Email);
                 commande.Parameters.AddWithValue("Nadresse", e.Adresse);
                 commande.Parameters.AddWithValue("Nembauche", e.DateEmbauche);
+                commande.Parameters.AddWithValue("Ntaux_horaire", e.TauxHoraire);
                 commande.Parameters.AddWithValue("Nphoto", e.Photo);
-
+                commande.Parameters.AddWithValue("Nstatut", e.Statut);
                 con.Open();
                 commande.Prepare();
                 commande.ExecuteNonQuery();

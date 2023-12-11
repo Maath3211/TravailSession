@@ -23,7 +23,6 @@
             <TextBox x:Name="tbxPhoto" Header="Lien vers la photo" Margin="5"/>
             <ComboBox x:Name="cbStatut" Header="Statut" Width="200">
                 <x:String >Journalier</x:String>
-                <x:String>Permanent</x:String>
             </ComboBox>
         </StackPanel>
     </ScrollViewer>
