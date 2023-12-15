@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -83,6 +84,21 @@ namespace Travail_session
             tblClient.Text = Convert.ToString(p.IdClient);
             tblStatut.Text = p.Statut;   
             }
+        }
+
+        private async void btAjoutEmp_Click(object sender, RoutedEventArgs e)
+        {
+            assignationEmp dialog = new assignationEmp();
+            dialog.XamlRoot = grille.XamlRoot;
+            dialog.Title = "Assignation Employe";
+            dialog.PrimaryButtonText = "Modifier";
+            //dialog.SecondaryButtonText = "Non";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            //dialog.Content = "mon contenu";
+
+            
+            ContentDialogResult result = await dialog.ShowAsync();
         }
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.UI;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -30,11 +31,55 @@ namespace Travail_session
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
+            var erreur = false;
+            if (string.IsNullOrEmpty(tbxTitre.Text))
+            {
+                erreur = true;
+                tbxTitre.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxDate.Text))
+            {
+                erreur = true;
+                tbxDate.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxDescription.Text))
+            {
+                erreur = true;
+                tbxDescription.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxBudget.Text))
+            {
+                erreur = true;
+                tbxBudget.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxNbrEmploye.Text))
+            {
+                erreur = true;
+                tbxNbrEmploye.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxTotalSalaire.Text))
+            {
+                erreur = true;
+                tbxTotalSalaire.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxIdClient.Text))
+            {
+                erreur = true;
+                tbxIdClient.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            if (string.IsNullOrEmpty(tbxStatut.Text))
+            {
+                erreur = true;
+                tbxStatut.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
 
-            projets p = new projets(null, tbxTitre.Text, tbxDate.Text, tbxDescription.Text, Convert.ToDouble(tbxBudget.Text), Convert.ToInt32(tbxNbrEmploye.Text),
-                Convert.ToDouble(tbxTotalSalaire.Text), Convert.ToInt32(tbxIdClient.Text), tbxStatut.Text);
-          Singleton.getInstance().ajouterProjet(p);
-            Frame.Navigate(typeof(affichage_projet));
+            if (!erreur)
+            {
+                projets p = new projets(null, tbxTitre.Text, tbxDate.Text, tbxDescription.Text, Convert.ToDouble(tbxBudget.Text), Convert.ToInt32(tbxNbrEmploye.Text),
+                    Convert.ToDouble(tbxTotalSalaire.Text), Convert.ToInt32(tbxIdClient.Text), tbxStatut.Text);
+                Singleton.getInstance().ajouterProjet(p);
+                Frame.Navigate(typeof(affichage_projet));
+            }
         }
     }
 }

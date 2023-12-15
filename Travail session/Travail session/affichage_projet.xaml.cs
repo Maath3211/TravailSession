@@ -42,11 +42,6 @@ namespace Travail_session
                     this.Frame.Navigate(typeof(PageZoomProjet), position);
                 }
 
-
-
-
-
-               
             }
         }
 
@@ -79,5 +74,6 @@ namespace Travail_session
 
 
         }
+
     }
 }

@@ -15,10 +15,10 @@
             <TextBox x:Name="tbxMat" Header="Matricule" Margin="5" IsReadOnly="True"/>
             <TextBox x:Name="tbxNom" Header="Nom" Margin="5"/>
             <TextBox x:Name="tbxPrenom" Header="Prenom" Margin="5"/>
-            <TextBox x:Name="tbxNaissance" Header="Email" Margin="5"/>
-            <TextBox x:Name="tbxEmail" Header=" Naissance (AAAA-MM-JJ)" Margin="5"/>
+            <TextBox x:Name="tbxNaissance" Header="Naissance (AAAA-MM-JJ)" Margin="5"/>
+            <TextBox x:Name="tbxEmail" Header="Email" Margin="5"/>
             <TextBox x:Name="tbxAdresse" Header="Adresse" Margin="5"/>
-            <TextBox x:Name="tbxTaux" Header="Taux horaire" Margin="5"/>
+            <TextBox x:Name="tbxTaux" Header="Taux horaire($)" Margin="5"/>
             <TextBox x:Name="tbxEmbauche" Header="Date d'embauche (AAAA-MM-JJ)" Margin="5"/>
             <TextBox x:Name="tbxPhoto" Header="Lien vers la photo" Margin="5"/>
             <ComboBox x:Name="cbStatut" Header="Statut" Width="200">

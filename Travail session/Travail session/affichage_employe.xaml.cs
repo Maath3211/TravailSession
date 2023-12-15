@@ -27,7 +27,6 @@ namespace Travail_session
         {
             this.InitializeComponent();
             lvEmploye.ItemsSource = Singleton.getInstance().getListeEmploye();
-            System.Diagnostics.Debug.WriteLine(Singleton.getInstance().getListeEmploye()[0].Email.ToString());
         }
 
         private async void gvView_SelectionChanged(object sender, SelectionChangedEventArgs e)
