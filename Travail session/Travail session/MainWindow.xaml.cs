@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -31,14 +32,18 @@ namespace Travail_session
             this.InitializeComponent();
             mainFrame.Navigate(typeof(affichage_projet));
             Singleton.getInstance().Fenetre = this;
+            
         }
+
 
         private void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-
+            
             var item = args.InvokedItemContainer.Name as string;
-
-           switch (item)
+            //****************************************************************************************************************************************************
+            if (Singleton.getInstance().adminExiste() == false) creer();
+            //****************************************************************************************************************************************************
+            switch (item)
             {
                 case "iAffClient":
                     mainFrame.Navigate(typeof(affichage_client));
@@ -48,9 +53,10 @@ namespace Travail_session
                     break;
                 case "iAjouProjet":
                     mainFrame.Navigate(typeof(affichage_projet));
+                    
                     break;
                 case "iAjoutClient":
-                    if(Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutClient));
+                    if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajoutClient));
                     break;
                 case "iAjoutEmploye":
                     if (Singleton.getInstance().GetSessionVariable() == true) mainFrame.Navigate(typeof(ajouteEmploye));
@@ -95,6 +101,17 @@ namespace Travail_session
             }
         }
 
-
+        public async void creer()
+        {
+            if (Singleton.getInstance().GetSessionVariable() == false)
+            {
+                connexion dialog = new connexion();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Création compte";
+                dialog.PrimaryButtonText = "Créer";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                ContentDialogResult result = await dialog.ShowAsync();
+            }
+        }
     }
 }
