@@ -30,8 +30,8 @@
 
         
         <!--CENTRER LA LISTVIEW AVEC LES TITRES-->
-        <ListView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" HorizontalAlignment="Stretch" SelectionChanged="lvClients_SelectionChanged">
-            <ListView.ItemTemplate>
+        <GridView x:Name="lvClients" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" HorizontalAlignment="Stretch" SelectionChanged="lvClients_SelectionChanged">
+            <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:clients">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="{x:Bind Nom}" Margin="50,0,0,0" FontSize="18" />
@@ -40,8 +40,8 @@
                         <TextBlock Text="{x:Bind Telephone}" Margin="40,0,0,0" FontSize="18"/>
                     </StackPanel>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </GridView.ItemTemplate>
+        </GridView>
 
     </Grid>
 </Page>

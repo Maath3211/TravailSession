@@ -75,5 +75,9 @@ namespace Travail_session
 
         }
 
+        private void lvProjets_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

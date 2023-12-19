@@ -27,18 +27,13 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="btEcrireCsv" Click="btEcrireCsv_Click" Grid.Column="0">Écrire dans le fichier csv</Button>
-        <TextBlock Text="Titre" Grid.Column="1" Margin="115,0,0,0"/>
-        <TextBlock Text="Date du debut" Grid.Column="2" Margin="45,0,0,0"/>
-        <TextBlock Text="Description" Grid.Column="3" Margin="45,0,0,0"/>
-        <TextBlock Text="Nombre d'employé" Grid.Column="4"/>
-        <TextBlock Text="Id du Client" Grid.Column="5"/>
-        <TextBlock Text="Statut" Grid.Column="6"/>
-    
 
-        <ListView x:Name="lvProjets" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" SelectionChanged="lvProjets_SelectionChanged">
-            <ListView.ItemTemplate>
+
+
+        <GridView x:Name="lvProjets" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,20,0,0" SelectionChanged="lvProjets_SelectionChanged">
+            <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:projets">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" Width="280">
                         <TextBlock Text="{x:Bind Titre}" Margin="50,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind DateDebut}" Margin="50,0,0,0" FontSize="18"/>
                         <TextBlock Text="{x:Bind Description}" Margin="40,0,0,0" FontSize="18"/>
@@ -49,8 +44,8 @@
                     </StackPanel>
                 </DataTemplate>
 
-            </ListView.ItemTemplate>
-        </ListView>
+            </GridView.ItemTemplate>
+        </GridView>
         
     </Grid>
 </Page>
