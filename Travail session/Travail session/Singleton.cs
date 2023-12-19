@@ -57,7 +57,7 @@ namespace Travail_session
             return sessionVariables;
         }
 
-        public void creerAdmin(string pass)
+        public void creerAdmin(string user, string pass)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Travail_session
                 commande.Connection = con;
                 commande.CommandType = System.Data.CommandType.StoredProcedure;
                 commande.Parameters.AddWithValue("ID", "NULL");
-                commande.Parameters.AddWithValue("username", "admin");
+                commande.Parameters.AddWithValue("username", user);
 
                 var sha256 = SHA256.Create();
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
@@ -100,7 +100,7 @@ namespace Travail_session
             sessionVariables = false;
         }
 
-        public void connexion(string pass)
+        public void connexion(string user, string pass)
         {
 
             try
@@ -117,7 +117,7 @@ namespace Travail_session
                     sb.Append(b.ToString("x2"));
 
                 if (con.State == System.Data.ConnectionState.Closed) con.Open();
-                commande.Parameters.AddWithValue("utilisateur", "admin");
+                commande.Parameters.AddWithValue("utilisateur", user);
                 commande.Parameters.AddWithValue("mot_de_passe", Convert.ToString(sb));
 
                 MySqlParameter returnParameter = new MySqlParameter();
