@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -30,8 +31,10 @@ namespace Travail_session
             if (Singleton.getInstance().GetSessionVariable())
             {
                 modifier.Visibility = Visibility.Visible;
+                btAjoutEmp.Visibility = Visibility.Visible;
             }
-            }
+            
+        }
         int position = -1;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -45,12 +48,12 @@ namespace Travail_session
                     tblTitre.Text = p.Titre;
                     tblDebut.Text = p.DateDebut;
                     tblDescription.Text = p.Description;
-                    tblBudget.Text = Convert.ToString( p.Budget);
+                    tblBudget.Text = Convert.ToString(p.Budget);
                     tblNbr.Text = Convert.ToString(p.NbrEmploye);
                     tblTotal.Text = Convert.ToString(p.TotalSalaire);
                     tblClient.Text = Convert.ToString(p.IdClient);
                     tblStatut.Text = p.Statut;
-
+                    
                 }
 
 
@@ -59,30 +62,30 @@ namespace Travail_session
 
         private async void modifier_Click(object sender, RoutedEventArgs e)
         {
-            if(Singleton.getInstance().GetSessionVariable())
+            if (Singleton.getInstance().GetSessionVariable())
             {
 
-         
-            modProjet dialog = new modProjet();
-            dialog.XamlRoot = grille.XamlRoot;
-            dialog.Title = "Modification Employe";
-            dialog.PrimaryButtonText = "Modifier";
-            //dialog.SecondaryButtonText = "Non";
-            dialog.CloseButtonText = "Annuler";
-            dialog.DefaultButton = ContentDialogButton.Primary;
-            //dialog.Content = "mon contenu";
 
-            dialog.SetProjet(Singleton.getInstance().getListeProjet()[position]);
-            ContentDialogResult result = await dialog.ShowAsync();
-            projets p = Singleton.getInstance().getListeProjet()[position];
-            tblTitre.Text = p.Titre;
-            tblDebut.Text = p.DateDebut;
-            tblDescription.Text = p.Description;
-            tblBudget.Text = Convert.ToString(p.Budget);
-            tblNbr.Text = Convert.ToString(p.NbrEmploye);
-            tblTotal.Text = Convert.ToString(p.TotalSalaire);
-            tblClient.Text = Convert.ToString(p.IdClient);
-            tblStatut.Text = p.Statut;   
+                modProjet dialog = new modProjet();
+                dialog.XamlRoot = grille.XamlRoot;
+                dialog.Title = "Modification Employe";
+                dialog.PrimaryButtonText = "Modifier";
+                //dialog.SecondaryButtonText = "Non";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                //dialog.Content = "mon contenu";
+
+                dialog.SetProjet(Singleton.getInstance().getListeProjet()[position]);
+                ContentDialogResult result = await dialog.ShowAsync();
+                projets p = Singleton.getInstance().getListeProjet()[position];
+                tblTitre.Text = p.Titre;
+                tblDebut.Text = p.DateDebut;
+                tblDescription.Text = p.Description;
+                tblBudget.Text = Convert.ToString(p.Budget);
+                tblNbr.Text = Convert.ToString(p.NbrEmploye);
+                tblTotal.Text = Convert.ToString(p.TotalSalaire);
+                tblClient.Text = Convert.ToString(p.IdClient);
+                tblStatut.Text = p.Statut;
             }
         }
 
@@ -97,7 +100,7 @@ namespace Travail_session
             dialog.DefaultButton = ContentDialogButton.Primary;
             //dialog.Content = "mon contenu";
 
-            
+
             ContentDialogResult result = await dialog.ShowAsync();
         }
     }

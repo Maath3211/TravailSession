@@ -44,5 +44,10 @@ namespace Travail_session
         public string Photo { get => photo; set => photo = value; }
         public string Statut { get => statut; set => statut = value; }
         public string Email { get => email; set => email = value; }
+
+        public override string ToString()
+        {
+            return Nom + ", " + Prenom;
+        }
     }
 }

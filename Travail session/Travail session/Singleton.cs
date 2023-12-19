@@ -5,8 +5,10 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace Travail_session
 
         ObservableCollection<clients> listeClients;
         ObservableCollection<employes> listeEmployes;
+        ObservableCollection<employes> lvDispo;
         ObservableCollection<projets> listeProjets;
         static Singleton instance = null;
         MySqlConnection con;
@@ -26,8 +29,10 @@ namespace Travail_session
         public Singleton()
         {
             con = new MySqlConnection(connexionBD.chaineConnexion);
+
             listeClients = new ObservableCollection<clients>();
             listeEmployes = new ObservableCollection<employes>();
+            lvDispo = new ObservableCollection<employes>();
             listeProjets = new ObservableCollection<projets>();
         }
 
@@ -40,7 +45,7 @@ namespace Travail_session
             return instance;
         }
 
-        
+
 
         public void SetSessionVariable(bool value)
         {
@@ -120,10 +125,10 @@ namespace Travail_session
                 commande.Parameters.Add(returnParameter);
 
                 commande.ExecuteNonQuery();
-                
+
                 con.Close();
                 SetSessionVariable(Convert.ToBoolean(returnParameter.Value));
-                
+
             }
             catch (MySqlException ex)
             {
@@ -132,9 +137,9 @@ namespace Travail_session
                     Debug.WriteLine(ex.Message);
                     con.Close();
                 }
-                
+
             }
-            
+
         }
 
 
@@ -353,6 +358,7 @@ namespace Travail_session
 
             }
         }
+
         public clients getClient(int position)
         {
             return listeClients[position];
@@ -442,5 +448,97 @@ namespace Travail_session
             set { fenetre = value; }
         }
 
+        public bool adminExiste()
+        {
+            bool existe = false;
+
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("f_adminExiste", con);
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                MySqlParameter returnValueParam = commande.Parameters.Add("@ireturnvalue", MySqlDbType.Int32);
+                returnValueParam.Direction = ParameterDirection.ReturnValue;
+                
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                commande.ExecuteNonQuery();
+
+                existe = Convert.ToBoolean(returnValueParam.Value);
+
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+            return existe;
+        }
+
+        public ObservableCollection<employes> getDispo()
+        {
+
+            lvDispo.Clear();
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_EmpDispo");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+
+                if (con.State == System.Data.ConnectionState.Closed) con.Open();
+                MySqlDataReader r = commande.ExecuteReader();
+                while (r.Read())
+                {
+                    lvDispo.Add(new employes((string)r["matricule"], (string)r["nom"], (string)r["prenom"], (string)r["email"], Convert.ToString(r["naissance"]).Substring(0, 10),
+                        (string)r["adresse"], Convert.ToString(r["embauche"]), Convert.ToDouble(r["taux_horaire"]), (string)r["photo"], (string)r["statut"]));
+                }
+                r.Close();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+            return lvDispo;
+        }
+
+
+        public void ajoutPE(string emp, string proj, double hre, double sal)
+        {
+            try
+            {
+                MySqlCommand commande = new MySqlCommand("p_AjoutPE");
+                commande.Connection = con;
+                commande.CommandType = System.Data.CommandType.StoredProcedure;
+                commande.Parameters.AddWithValue("idEmp", emp);
+                commande.Parameters.AddWithValue("idProj", proj);
+                commande.Parameters.AddWithValue("hre", hre);
+                commande.Parameters.AddWithValue("sal", sal);
+
+                con.Open();
+                commande.Prepare();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (MySqlException ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    con.Close();
+                }
+
+            }
+        }
     }
 }

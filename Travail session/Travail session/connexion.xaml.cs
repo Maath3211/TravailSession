@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -40,13 +41,17 @@ namespace Travail_session
                 tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
-            if (!erreur) Singleton.getInstance().connexion(tbxPassword.Text);
+            if (!erreur && Singleton.getInstance().adminExiste() == true) Singleton.getInstance().connexion(tbxPassword.Text);
+            else if (!erreur && Singleton.getInstance().adminExiste() == false)
+            {
+                Singleton.getInstance().creerAdmin(tbxPassword.Text);
+            }
             else args.Cancel = true;
         }
 
         private void ContentDialog_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-
+            args.Cancel = true;
         }
     }
 }
