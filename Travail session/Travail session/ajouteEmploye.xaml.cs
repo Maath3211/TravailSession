@@ -57,11 +57,21 @@ namespace Travail_session
             {
                 DateTime ajdDate = DateTime.Now;
                 int annee = ajdDate.Year;
+                int nbrNombre = tbxDateN.Text.Length;
+                if(nbrNombre < 4)
+                {
+                    erreur = true;
+                    tbxDateN.BorderBrush = new SolidColorBrush(Colors.Red);
+                }else
+                {
+
+               
                 string dateN = Convert.ToString(tbxDateN.Text).Substring(0, 4);
                 if (annee - Convert.ToInt32(dateN) < 18 || annee - Convert.ToInt32(dateN) >65)
                 {
                     erreur = true;
                     tbxDateN.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
                 }
             }
             if (string.IsNullOrEmpty(tbxAdresse.Text))
@@ -78,11 +88,22 @@ namespace Travail_session
             {
                 DateTime ajdDate = DateTime.Now;
                 int annee = ajdDate.Year;
+                int nbrNombre = tbxDateE.Text.Length;
+                if(nbrNombre < 4)
+                {
+                    erreur = true;
+                    tbxDateE.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+
+               
                 string dateE = Convert.ToString(tbxDateE.Text).Substring(0, 4);
                 if (annee - Convert.ToInt32(dateE) < 0)
                 {
                     erreur = true;
                     tbxDateE.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
                 }
             }
             if (string.IsNullOrEmpty(tbxTaux.Text))
