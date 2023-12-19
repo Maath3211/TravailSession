@@ -41,10 +41,10 @@ namespace Travail_session
                 tbxPassword.BorderBrush = new SolidColorBrush(Colors.Red);
             }
 
-            if (!erreur && Singleton.getInstance().adminExiste() == true) Singleton.getInstance().connexion(tbxPassword.Text);
+            if (!erreur && Singleton.getInstance().adminExiste() == true) Singleton.getInstance().connexion(tbxUser.Text,tbxPassword.Text);
             else if (!erreur && Singleton.getInstance().adminExiste() == false)
             {
-                Singleton.getInstance().creerAdmin(tbxPassword.Text);
+                Singleton.getInstance().creerAdmin(tbxUser.Text,tbxPassword.Text);
             }
             else args.Cancel = true;
         }

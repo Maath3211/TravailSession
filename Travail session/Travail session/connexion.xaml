@@ -11,7 +11,7 @@
     CloseButtonClick="ContentDialog_CloseButtonClick">
 
     <StackPanel>
-        <TextBox x:Name="tbxUser" Header="Entrez le nom d'utilisater" Text="admin" IsReadOnly="True" Margin="5"/>
+        <TextBox x:Name="tbxUser" Header="Entrez le nom d'utilisater" Text="admin" Margin="5"/>
         <TextBox x:Name="tbxPassword" Header="Entrez le mot de passe" Margin="5"/>
     </StackPanel>
 </ContentDialog>
