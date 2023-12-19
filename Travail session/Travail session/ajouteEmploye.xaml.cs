@@ -53,6 +53,17 @@ namespace Travail_session
                 erreur = true;
                 tbxDateN.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                DateTime ajdDate = DateTime.Now;
+                int annee = ajdDate.Year;
+                string dateN = Convert.ToString(tbxDateN.Text).Substring(0, 4);
+                if (annee - Convert.ToInt32(dateN) < 18 || annee - Convert.ToInt32(dateN) >65)
+                {
+                    erreur = true;
+                    tbxDateN.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+            }
             if (string.IsNullOrEmpty(tbxAdresse.Text))
             {
                 erreur = true;
@@ -63,10 +74,45 @@ namespace Travail_session
                 erreur = true;
                 tbxDateE.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                DateTime ajdDate = DateTime.Now;
+                int annee = ajdDate.Year;
+                string dateE = Convert.ToString(tbxDateE.Text).Substring(0, 4);
+                if (annee - Convert.ToInt32(dateE) < 0)
+                {
+                    erreur = true;
+                    tbxDateE.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+            }
+            if (string.IsNullOrEmpty(tbxTaux.Text))
+            {
+                
+              
+                erreur = true;
+                tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
             if (string.IsNullOrEmpty(tbxTaux.Text))
             {
                 erreur = true;
                 tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                if (!double.TryParse(tbxTaux.Text, out double result))
+                {
+                    erreur = true;
+                    tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    if (Convert.ToDouble(tbxTaux.Text) < 0)
+                    {
+
+                        erreur = true;
+                        tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+                    }
+                }
             }
             if (string.IsNullOrEmpty(tbxPhoto.Text))
             {

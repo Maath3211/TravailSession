@@ -93,6 +93,25 @@ namespace Travail_session
                 erreur = true;
                 tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                if (!double.TryParse(tbxTaux.Text, out double result))
+                {
+                    erreur = true;
+                    tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+                else
+                {
+                    if (Convert.ToDouble(tbxTaux.Text) < 0)
+                    {
+
+                        erreur = true;
+                        tbxTaux.BorderBrush = new SolidColorBrush(Colors.Red);
+                    }
+                }
+            }
+           
+           
             if (!erreur) Singleton.getInstance().modEmploye(new employes(tbxMat.Text, tbxNom.Text, tbxPrenom.Text, tbxNaissance.Text, tbxEmail.Text, tbxAdresse.Text,tbxEmbauche.Text,Convert.ToDouble(tbxTaux.Text),tbxPhoto.Text, (string)cbStatut.SelectedValue));
             else args.Cancel = true;
 
