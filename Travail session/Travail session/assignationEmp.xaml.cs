@@ -22,16 +22,18 @@ namespace Travail_session
 {
     public sealed partial class assignationEmp : ContentDialog
     {
+        string pro = "";
+        double hr = 0;
+        int nbEmp = 0;
         public assignationEmp()
         {
             this.InitializeComponent();
             ajoutCB();
+            
         }
 
         public void ajoutCB()
         {
-            Debug.WriteLine(Singleton.getInstance().getDispo()[1].Nom);
-
             for (int i = 0; i < Singleton.getInstance().getDispo().Count; i++)
             {
                 string nom = Singleton.getInstance().getDispo()[i].Nom + ", " + Singleton.getInstance().getDispo()[i].Prenom;
@@ -43,14 +45,81 @@ namespace Travail_session
             }
         }
 
+        public void SetProj(string proj, double hre, int nbEmp)
+        {
+            pro = proj;
+            hr = hre;
+            this.nbEmp = nbEmp;
+            setCB();
+        }
+
+        private void setCB()
+        {
+            switch (nbEmp)
+            {
+                case 1:
+                    cbAss1.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    cbAss1.Visibility = Visibility.Visible;
+                    cbAss2.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    cbAss1.Visibility = Visibility.Visible;
+                    cbAss2.Visibility = Visibility.Visible;
+                    cbAss3.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    cbAss1.Visibility = Visibility.Visible;
+                    cbAss2.Visibility = Visibility.Visible;
+                    cbAss3.Visibility = Visibility.Visible;
+                    cbAss4.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    cbAss1.Visibility = Visibility.Visible;
+                    cbAss2.Visibility = Visibility.Visible;
+                    cbAss3.Visibility = Visibility.Visible;
+                    cbAss4.Visibility = Visibility.Visible;
+                    cbAss5.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            switch (nbEmp)
+            {
+                case 1:
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+                    break;
+                case 2:
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss2.SelectedIndex].Matricule, pro, hr, 0);
+                    break;
+                case 3:
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss2.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss3.SelectedIndex].Matricule, pro, hr, 0);
+                    break;
+                case 4:
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss2.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss3.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss4.SelectedIndex].Matricule, pro, hr, 0);
+                    break;
+                case 5:
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss2.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss3.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss4.SelectedIndex].Matricule, pro, hr, 0);
+                    Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss5.SelectedIndex].Matricule, pro, hr, 0);
+                    break;
+            }
             
 
+
+
             
-
-
         }
 
         private void ContentDialog_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
