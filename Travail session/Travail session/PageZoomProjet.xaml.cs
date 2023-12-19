@@ -25,6 +25,7 @@ namespace Travail_session
     /// </summary>
     public sealed partial class PageZoomProjet : Page
     {
+        projets p;
         public PageZoomProjet()
         {
             this.InitializeComponent();
@@ -33,7 +34,7 @@ namespace Travail_session
                 modifier.Visibility = Visibility.Visible;
                 btAjoutEmp.Visibility = Visibility.Visible;
             }
-            
+           
         }
         int position = -1;
 
@@ -99,8 +100,8 @@ namespace Travail_session
             dialog.CloseButtonText = "Annuler";
             dialog.DefaultButton = ContentDialogButton.Primary;
             //dialog.Content = "mon contenu";
-
-
+            projets p = Singleton.getInstance().getListeProjet()[position];
+            dialog.SetProj(p.NumeroProjet, p.Budget, p.NbrEmploye);
             ContentDialogResult result = await dialog.ShowAsync();
         }
     }

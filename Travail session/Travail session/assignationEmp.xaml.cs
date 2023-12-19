@@ -22,16 +22,18 @@ namespace Travail_session
 {
     public sealed partial class assignationEmp : ContentDialog
     {
+        string pro = "";
+        double hr = 0;
+        int nbEmp = 0;
         public assignationEmp()
         {
             this.InitializeComponent();
             ajoutCB();
+            
         }
 
         public void ajoutCB()
         {
-            Debug.WriteLine(Singleton.getInstance().getDispo()[1].Nom);
-
             for (int i = 0; i < Singleton.getInstance().getDispo().Count; i++)
             {
                 string nom = Singleton.getInstance().getDispo()[i].Nom + ", " + Singleton.getInstance().getDispo()[i].Prenom;
@@ -43,14 +45,20 @@ namespace Travail_session
             }
         }
 
+        public void SetProj(string proj, double hre, int nbEmp)
+        {
+            pro = proj;
+            hr = hre;
+            this.nbEmp = nbEmp;
+        }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            
+            Singleton.getInstance().ajoutPE(Singleton.getInstance().getDispo()[cbAss1.SelectedIndex].Matricule, pro, hr, 0);
+
+
 
             
-
-
         }
 
         private void ContentDialog_CloseButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
