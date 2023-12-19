@@ -37,6 +37,6 @@
         <TextBlock x:Name="tblClient" FontSize="40" Grid.Column="6" Grid.Row="1" ></TextBlock>
         <TextBlock x:Name="tblStatut" FontSize="40" Grid.Column="7" Grid.Row="1" ></TextBlock>
         <Button x:Name="modifier" Click="modifier_Click" Grid.Row="0" Height="100" Visibility="Collapsed">Modifier</Button>
-        <Button x:Name="btAjoutEmp" Click="btAjoutEmp_Click" Grid.Row="2">Ajouter des employés</Button>
+        <Button x:Name="btAjoutEmp" Click="btAjoutEmp_Click" Grid.Row="2" Visibility="Collapsed">Ajouter des employés</Button>
     </Grid>
 </Page>

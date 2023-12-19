@@ -11,13 +11,30 @@
     CloseButtonClick="ContentDialog_CloseButtonClick">
 
     <Grid>
-        <StackPanel>
-            <ComboBox x:Name="cbAss1" Header="Employe 1" Width="200"/>
-            <ComboBox x:Name="cbAss2" Header="Employe 2" Width="200"/>
-            <ComboBox x:Name="cbAss3" Header="Employe 3" Width="200"/>
-            <ComboBox x:Name="cbAss4" Header="Employe 4" Width="200"/>
-            <ComboBox x:Name="cbAss5" Header="Employe 5" Width="200"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        </StackPanel>
+        <ComboBox x:Name="cbAss1" Header="Employe 1" Width="200" Grid.Column="0" Grid.Row="0"/>
+        <ComboBox x:Name="cbAss2" Header="Employe 2" Width="200" Grid.Column="0" Grid.Row="1"/>
+        <ComboBox x:Name="cbAss3" Header="Employe 3" Width="200" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox x:Name="cbAss4" Header="Employe 4" Width="200" Grid.Column="0" Grid.Row="3"/>
+        <ComboBox x:Name="cbAss5" Header="Employe 5" Width="200" Grid.Column="0" Grid.Row="4"/>
+
+        <TextBlock x:Name="tbx1" Grid.Column="1" Grid.Row="0" Margin="20,33,0,0"/>
+        <TextBlock x:Name="tbx2" Grid.Column="1" Grid.Row="1" Margin="20,33,0,0"/>
+        <TextBlock x:Name="tbx3" Grid.Column="1" Grid.Row="2" Margin="20,33,0,0"/>
+        <TextBlock x:Name="tbx4" Grid.Column="1" Grid.Row="3" Margin="20,33,0,0"/>
+        <TextBlock x:Name="tbx5" Grid.Column="1" Grid.Row="4" Margin="20,33,0,0"/>
+
     </Grid>
 </ContentDialog>

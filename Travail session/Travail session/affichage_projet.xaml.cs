@@ -33,16 +33,11 @@ namespace Travail_session
 
         private  void lvProjets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lvProjets.SelectedItem != null)
-            {
-
                 if (lvProjets.SelectedItem != null)
                 {
                     int position = lvProjets.SelectedIndex;
                     this.Frame.Navigate(typeof(PageZoomProjet), position);
                 }
-
-            }
         }
 
         private void detail_Click(object sender, RoutedEventArgs e)
