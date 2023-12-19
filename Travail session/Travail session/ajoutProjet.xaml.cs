@@ -52,15 +52,40 @@ namespace Travail_session
                 erreur = true;
                 tbxBudget.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                if (!double.TryParse(tbxBudget.Text, out double result))
+                {
+                    erreur = true;
+                    tbxBudget.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+            }
+
             if (string.IsNullOrEmpty(tbxNbrEmploye.Text))
             {
                 erreur = true;
                 tbxNbrEmploye.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            else
+            {
+                if (!double.TryParse(tbxNbrEmploye.Text, out double result))
+                {
+                    erreur = true;
+                    tbxNbrEmploye.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
+            }
             if (string.IsNullOrEmpty(tbxTotalSalaire.Text))
             {
                 erreur = true;
                 tbxTotalSalaire.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+            else
+            {
+                if (!double.TryParse(tbxTotalSalaire.Text, out double result))
+                {
+                    erreur = true;
+                    tbxTotalSalaire.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
             }
             if (string.IsNullOrEmpty(tbxIdClient.Text))
             {

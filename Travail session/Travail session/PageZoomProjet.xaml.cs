@@ -45,13 +45,14 @@ namespace Travail_session
                 if (position >= 0)
                 {
                     projets p = Singleton.getInstance().getListeProjet()[position];
+                    clients c = Singleton.getInstance().getListeClients()[position];
                     tblTitre.Text = p.Titre;
                     tblDebut.Text = p.DateDebut;
                     tblDescription.Text = p.Description;
                     tblBudget.Text = Convert.ToString(p.Budget);
                     tblNbr.Text = Convert.ToString(p.NbrEmploye);
                     tblTotal.Text = Convert.ToString(p.TotalSalaire);
-                    tblClient.Text = Convert.ToString(p.IdClient);
+                    tblClient.Text = Convert.ToString(c.Nom);
                     tblStatut.Text = p.Statut;
                     
                 }

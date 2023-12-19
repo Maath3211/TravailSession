@@ -10,33 +10,27 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="grille">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+       
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-
-        <TextBlock x:Name="tblTitre" FontSize="40" Grid.Column="0" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblDebut" FontSize="40" Grid.Column="1" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblDescription" FontSize="40" Grid.Column="2" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblBudget" FontSize="40" Grid.Column="3" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblNbr" FontSize="40" Grid.Column="4" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblTotal" FontSize="40" Grid.Column="5" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblClient" FontSize="40" Grid.Column="6" Grid.Row="1" ></TextBlock>
-        <TextBlock x:Name="tblStatut" FontSize="40" Grid.Column="7" Grid.Row="1" ></TextBlock>
-        <Button x:Name="modifier" Click="modifier_Click" Grid.Row="0" Height="100" Visibility="Collapsed">Modifier</Button>
-        <Button x:Name="btAjoutEmp" Click="btAjoutEmp_Click" Grid.Row="2" Visibility="Collapsed">Ajouter des employés</Button>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="tblTitre2" FontSize="30"  >Titre:</TextBlock>
+            <TextBlock x:Name="tblTitre" FontSize="20"  ></TextBlock>
+            <TextBlock x:Name="tblDebut2" FontSize="30"   >Date de debut:</TextBlock>
+            <TextBlock x:Name="tblDebut" FontSize="20"   ></TextBlock>
+            <TextBlock x:Name="tblDescription2" FontSize="30"   >Description:</TextBlock>
+            <TextBlock x:Name="tblDescription" FontSize="20"   ></TextBlock>
+            <TextBlock x:Name="tblBudget2" FontSize="30" >Budget:</TextBlock>
+            <TextBlock x:Name="tblBudget" FontSize="20" ></TextBlock>
+            <TextBlock x:Name="tblNbr2" FontSize="30"  >Nombre d'employe:</TextBlock>
+        <TextBlock x:Name="tblNbr" FontSize="20"  ></TextBlock>
+            <TextBlock x:Name="tblTotal2" FontSize="30"  >Total des salaire:</TextBlock>
+        <TextBlock x:Name="tblTotal" FontSize="20"  ></TextBlock>
+            <TextBlock x:Name="tblClient2" FontSize="30"  >Client:</TextBlock>
+        <TextBlock x:Name="tblClient" FontSize="20"  ></TextBlock>
+            <TextBlock x:Name="tblStatut2" FontSize="30"  >Statut:</TextBlock>
+            <TextBlock x:Name="tblStatut" FontSize="20"  ></TextBlock>
+        <Button x:Name="modifier" Click="modifier_Click"   Visibility="Collapsed">Modifier</Button>
+        <Button x:Name="btAjoutEmp" Click="btAjoutEmp_Click"  Visibility="Collapsed">Ajouter des employés</Button>
+        </StackPanel>
     </Grid>
 </Page>
